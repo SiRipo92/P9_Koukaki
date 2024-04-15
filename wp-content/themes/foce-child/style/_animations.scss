@@ -1,0 +1,24 @@
+ /*********************** KEYFRAME ANIMATIONS ***********************/
+
+ // Banner fade in and down
+ @keyframes Banner-fadeDown {
+    0% {
+      transform: translateY(-300px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }; 
+  
+  @keyframes SectionTitleAnimation {
+      0% {
+          transform: translateY(300px);
+          opacity: 0;
+      }
+      100% {
+          transform: translateY(0);
+          opacity: 1;
+      } 
+  };
