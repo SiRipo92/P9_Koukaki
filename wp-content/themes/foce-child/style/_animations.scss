@@ -1,7 +1,90 @@
  /*********************** KEYFRAME ANIMATIONS ***********************/
 
- // Banner fade in and down
- @keyframes Banner-fadeDown {
+ //// Variables for animations
+$anim-dur: 1.5s;
+$anim-easein: ease-in;
+$anim-delay: 0.5s;
+
+
+/*********************** Animation classes ***********************/
+/********* Global Animation Classes *********/
+
+/////////////////////////////////////THESE STILL NEED TO BE MODIFIED TO INCLUDE OTHER PROPERTIES
+///////////////////////////////////// SUCH AS TRANSFORM OR OPACITY, ETC
+.FadeIn {
+  animation: FadeIn $anim-dur $anim-easein $anim-delay;
+};
+.FadeOut {
+  animation: FadeOut $anim-dur $anim-easein $anim-delay;
+};
+
+.FlowerSpin {
+  animation: rotate $anim-dur $anim-easein $anim-delay;
+};
+/********* Banner Animation Classes *********/
+.Banner-FadeDown {
+  animation: banner-fade-down $anim-dur $anim-easein $anim-delay;
+};
+
+.Banner-LogoUp {
+  /** This one is different in that it has a delay attached to it for the logo to appear and then start floating **/
+  animation: ContentUp $anim-dur $anim-easein $anim-delay; 
+};
+
+.Banner-LogoFloat {
+  animation: Banner-float $anim-dur $anim-easein $anim-delay;
+};
+
+/*********** Content ***********/
+.Section-Title {
+  animation: ContentUp $anim-dur $anim-easein $anim-delay;
+};
+
+/************************* Global Keyframes *************************/
+// Simple fade in and out
+@keyframes FadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  } 
+};
+
+@keyframes FadeOut {
+  0% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+  } 
+};
+
+// Logo and header title fade in and up
+  @keyframes ContentUp {
+  0% {
+      transform: translateY(300px);
+      opacity: 0;
+    }
+  100% {
+      transform: translateY(0);
+      opacity: 1;
+    } 
+  };
+
+// Rotating effect for flowers
+  @keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+      100% {
+        transform: rotate(360deg);
+    } 
+  };
+/************************* BANNER *************************/
+ 
+// Banner fade in and down
+ @keyframes banner-fade-down {
     0% {
       transform: translateY(-300px);
       opacity: 0;
@@ -11,14 +94,30 @@
       opacity: 1;
     }
   }; 
-  
-  @keyframes SectionTitleAnimation {
-      0% {
-          transform: translateY(300px);
-          opacity: 0;
-      }
-      100% {
-          transform: translateY(0);
-          opacity: 1;
-      } 
+
+  // 3D float effect for the logo
+@keyframes banner-float {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    25% {
+      transform: scale(1.2);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 0.5;
+    }
+    75% {
+      transform: scale(1.2);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
   };
+
+
+
