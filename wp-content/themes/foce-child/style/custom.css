@@ -1,0 +1,112 @@
+@charset "UTF-8";
+/*
+ Theme Name:  Fleurs d'orangers et chats errants - Oscars Short
+ Theme URI: https://www.koukaki.local
+ Author: Studio Koukaki
+ Author URI: https://www.koukaki.local
+ Template: foce
+ Description: Thème enfant à l'ocasion de la nomination aux Oscars Shorts
+ Version: 0.1
+ */
+/*********************** KEYFRAME ANIMATIONS ***********************/
+/*********************** Animation classes ***********************/
+/********* Global Animation Classes *********/
+.FadeIn {
+  animation: FadeIn 1.5s ease-in 0.5s;
+}
+
+.FadeOut {
+  animation: FadeOut 1.5s ease-in 0.5s;
+}
+
+.FlowerSpin {
+  animation: rotate 1.5s ease-in 0.5s;
+}
+
+/********* Banner Animation Classes *********/
+.Banner-FadeDown {
+  animation: banner-fade-down 1.5s ease-in 0.5s;
+}
+
+.Banner-LogoUp {
+  /** This one is different in that it has a delay attached to it for the logo to appear and then start floating **/
+  animation: ContentUp 1.5s ease-in 0.5s;
+}
+
+.Banner-LogoFloat {
+  animation: Banner-float 1.5s ease-in 0.5s;
+}
+
+/*********** Content ***********/
+.Section-Title {
+  animation: ContentUp 1.5s ease-in 0.5s;
+}
+
+/************************* Global Keyframes *************************/
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes FadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes ContentUp {
+  0% {
+    transform: translateY(300px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/************************* BANNER *************************/
+@keyframes banner-fade-down {
+  0% {
+    transform: translateY(-300px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes banner-float {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  75% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}/*# sourceMappingURL=custom.css.map */
