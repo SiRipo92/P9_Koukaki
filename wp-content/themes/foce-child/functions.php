@@ -4,8 +4,8 @@ function theme_enqueue_styles() {
     // Add the parent style
     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
 
-    // Add the parallax style
-    wp_enqueue_style( 'custom-style', get_stylesheet_directory_uri() . '/style/css/custom.css' );
+    // My custom CSS
+    wp_enqueue_style( 'custom-style', get_stylesheet_directory_uri() . '/style/custom.css' );
 
     // Add the Swiper CSS
     wp_enqueue_style( 'swiper-bundle-css', get_stylesheet_directory_uri() . '/node_modules/swiper/swiper-bundle.min.css', array(), true );
