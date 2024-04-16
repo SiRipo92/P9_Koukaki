@@ -1,122 +1,93 @@
  /*********************** KEYFRAME ANIMATIONS ***********************/
 
  //// Variables for animations
-$anim-dur: 1.5s;
-$anim-easein: ease-in;
+$anim-dur: 1s;
+$in: ease-in;
+$inOut: ease-in-out;
 $anim-delay: 0.5s;
 
 
-/*********************** Animation classes ***********************/
-/********* Global Animation Classes *********/
+/************************************************** SECTION TRANSITION CLASSES *****************************************************/
+
+/* Define CSS for sections */
+section.banner,
+section.story,
+article#characters,
+article#place,
+section#studio,
+.site-footer {
+    opacity: 0; /* Initially set opacity to 0 */
+    transition: opacity $anim-dur $inOut ; /* Apply transition for smooth opacity change */
+}
+
+
+section.banner.activated,
+section.story.activated,
+article#characters.activated,
+article#place.activated,
+section#studio.activated,
+.site-footer.activated {
+    opacity: 1; /* Set opacity to 1 when section becomes activated */
+}
+
+
+
+/************************************************** BANNER TRANSITION CLASSES *****************************************************/
+
+/* Define CSS for Logo */
+
+
+.LogoFloat {
+  animation-name: banner-float;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: $inOut;
+}
+
+.rotate {
+  animation-name: rotate;
+  animation-duration: 1turn;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.Section-Title {
+  animation-name: slide-up;
+  animation-duration: $anim-dur;
+  animation-iteration-count: 1;
+  animation-timing-function: $in;
+}
 
 /////////////////////////////////////THESE STILL NEED TO BE MODIFIED TO INCLUDE OTHER PROPERTIES
 ///////////////////////////////////// SUCH AS TRANSFORM OR OPACITY, ETC
-.FadeIn {
-  animation: FadeIn $anim-dur $anim-easein $anim-delay;
-};
-.FadeOut {
-  animation: FadeOut $anim-dur $anim-easein $anim-delay;
-};
-
-.FlowerSpin {
-  animation: rotate $anim-dur $anim-easein $anim-delay;
-};
-/********* Banner Animation Classes *********/
-.Banner-FadeDown {
-  animation: banner-fade-down $anim-dur $anim-easein $anim-delay;
-};
-
-.Banner-LogoUp {
-  /** This one is different in that it has a delay attached to it for the logo to appear and then start floating **/
-  animation: ContentUp $anim-dur $anim-easein $anim-delay; 
-};
-
-.Banner-LogoFloat {
-  animation: Banner-float $anim-dur $anim-easein $anim-delay;
-};
-
-/*********** Content ***********/
-.Section-Title {
-  animation: ContentUp $anim-dur $anim-easein $anim-delay;
-};
-
 /************************* Global Keyframes *************************/
-// Simple fade in and out
-@keyframes FadeIn {
-  0% {
-      opacity: 0;
-  }
-  100% {
-      opacity: 1;
-  } 
-};
-
-@keyframes FadeOut {
-  0% {
-      opacity: 1;
-  }
-  100% {
-      opacity: 0;
-  } 
-};
 
 // Logo and header title fade in and up
-  @keyframes ContentUp {
-  0% {
-      transform: translateY(300px);
-      opacity: 0;
-    }
-  100% {
-      transform: translateY(0);
-      opacity: 1;
-    } 
+  @keyframes slide-up {
+    from { transform: translateY(300px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; } 
   };
 
 // Rotating effect for flowers
   @keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-      100% {
-        transform: rotate(360deg);
-    } 
+    from { transform: rotate(0deg) ; }
+    to { transform: rotate(360deg) ; } 
   };
+
 /************************* BANNER *************************/
- 
 // Banner fade in and down
- @keyframes banner-fade-down {
-    0% {
-      transform: translateY(-300px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }; 
+ @keyframes slide-down {
+    from { transform: translateY(-300px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+ };
 
   // 3D float effect for the logo
 @keyframes banner-float {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    25% {
-      transform: scale(1.2);
-      opacity: 0.8;
-    }
-    50% {
-      transform: scale(1.5);
-      opacity: 0.5;
-    }
-    75% {
-      transform: scale(1.2);
-      opacity: 0.8;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
+    0% { transform: scale(1);     }
+    25% { transform: scale(1.2);  }
+    50% { transform: scale(1.5);  }
+    75% { transform: scale(1.2);  }
+    100% { transform: scale(1);   }
   };
 
 
