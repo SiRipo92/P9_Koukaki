@@ -12,17 +12,7 @@ function theme_enqueue_styles() {
     wp_enqueue_script('swiper-bundle-js', get_stylesheet_directory_uri() . '/node_modules/swiper/swiper-bundle.min.js', array(), true);
 
     // Add jQuery from a CDN
-    wp_enqueue_script('jquery');
-        // Add a custom script to check if jQuery is loaded
-        wp_add_inline_script('jquery', '
-            // Check if jQuery is defined
-            if (typeof jQuery !== "undefined") {
-                // jQuery is loaded
-                console.log("jQuery is installed in WordPress.");
-            } else {
-                // jQuery is not loaded
-                console.log("jQuery is NOT installed in WordPress.");
-            }');
+    wp_enqueue_script('jquery'); 
 
     // Add custom script
     wp_enqueue_script( 'custom-script', get_stylesheet_directory_uri() . '/js/custom.js', array('jquery'), '1.0.0', true );
