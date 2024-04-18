@@ -1,94 +1,152 @@
- /*********************** KEYFRAME ANIMATIONS ***********************/
+/* Variables */
 
- //// Variables for animations
-$anim-dur: 1s;
+
+/////// NEED TO FIX THIS
+/// REDO ANIMATION CLASSES
+/// Need to set opacity to zero for sections (in JS) as an initial baseline and then the banner
+/// will be .activated with a class.
+/// 
+/// need to go to custom.scss file and add the opacity and transitions directly into the elements to be modified
+
 $in: ease-in;
+$out: ease-out;
 $inOut: ease-in-out;
 $anim-delay: 0.5s;
+$anim-dur: .75s;
 
-
-/************************************************** SECTION TRANSITION CLASSES *****************************************************/
-
-/* Define CSS for sections */
-section.banner,
-section.story,
-article#characters,
-article#place,
-section#studio,
-.site-footer {
-    opacity: 0; /* Initially set opacity to 0 */
-    transition: opacity $anim-dur $inOut ; /* Apply transition for smooth opacity change */
+/* Keyframes */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-
-section.banner.activated,
-section.story.activated,
-article#characters.activated,
-article#place.activated,
-section#studio.activated,
-.site-footer.activated {
-    opacity: 1; /* Set opacity to 1 when section becomes activated */
+@keyframes slide-down {
+  from {
+    transform: translateY(-300px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-
-
-/************************************************** BANNER TRANSITION CLASSES *****************************************************/
-
-/* Define CSS for Logo */
-
-
-.LogoFloat {
-  animation-name: banner-float;
-  animation-duration: 500ms;
-  animation-iteration-count: infinite;
-  animation-timing-function: $inOut;
+@keyframes slide-up {
+  from {
+    transform: translateY(100px);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
-.rotate {
-  animation-name: rotate;
-  animation-duration: 1turn;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+@keyframes float-logo {
+  0%,
+  100% {
+    transform: translate3d(-10px, 10px, 0px) scale(1);
+  }
+  25%,
+  75% {
+    transform: translate3d(10px, -10px, 5px) scale(1.2);
+  }
+  50% {
+    transform: translate3d(-20px, 20px, 5px) scale(1.5);
+  }
 }
 
-.Section-Title {
-  animation-name: slide-up;
-  animation-duration: $anim-dur;
-  animation-iteration-count: 1;
-  animation-timing-function: $in;
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-/////////////////////////////////////THESE STILL NEED TO BE MODIFIED TO INCLUDE OTHER PROPERTIES
-///////////////////////////////////// SUCH AS TRANSFORM OR OPACITY, ETC
-/************************* Global Keyframes *************************/
+/* Mixins */
+@mixin banner-anim {
+  transform: translateY(300px), scale(0);
+  opacity: 0;
+  animation: slide-up $anim-dur $in;
 
-// Logo and header title fade in and up
-  @keyframes slide-up {
-    from { transform: translateY(300px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; } 
-  };
+  &.activated {
+    transform: translateY(0), scale(1);
+    opacity: 1;
+  }
+}
 
-// Rotating effect for flowers
-  @keyframes rotate {
-    from { transform: rotate(0deg) ; }
-    to { transform: rotate(360deg) ; } 
-  };
+@mixin simple-fade-in {
+  opacity: 0;
+  animation: fade-in $anim-dur 1 $in;
+}
 
-/************************* BANNER *************************/
-// Banner fade in and down
- @keyframes slide-down {
-    from { transform: translateY(-300px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
- };
+@mixin slide-up {
+  transform: translateY(100px);  // Initial positioning
+  animation: slide-up $anim-dur $in;  // Reference existing keyframe
+}
 
-  // 3D float effect for the logo
-@keyframes banner-float {
-    0% { transform: scale(1);     }
-    25% { transform: scale(1.2);  }
-    50% { transform: scale(1.5);  }
-    75% { transform: scale(1.2);  }
-    100% { transform: scale(1);   }
-  };
+@mixin slide-down {
+  transform: translateY(-300px);  // Initial positioning
+  animation: slide-down $anim-dur $in;  // Reference existing keyframe
+}
 
+@mixin float-logo {
+  transform: translateY(0), scale(1.10);
+  animation: slide-up $anim-dur $in 3000ms, float-logo 1.5s infinite forwards;
+}
 
+@mixin spin {
+  transform: rotate(0deg);
+  animation: rotate 2s infinite linear;
+}
 
+/* Animation Classes */
+
+// For fading in sections
+.reveal {
+  @include simple-fade-in;
+
+  &.activated {
+    opacity: 1;
+  }
+}
+
+// For sliding up content
+.section-content-up {
+  @include slide-up;
+
+  &.activated {
+    transform: translateY(0);
+  }
+}
+
+// For floating logo
+.float-logo {
+  @include float-logo;
+
+  &.activated {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.spin {
+  @include spin;
+
+  &.activated {
+    transform: rotate(360deg);
+  }
+}
+
+.banner-slide-down {
+  @include slide-down;
+
+  &.activated {
+    transform: translateY(0);
+  }
+}
