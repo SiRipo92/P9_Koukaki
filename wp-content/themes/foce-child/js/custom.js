@@ -1,63 +1,91 @@
 jQuery(document).ready(function($) {
-    console.log("Document is ready.");
+  // Function to check if an element has ::before and ::after pseudo-elements
+  function hasBeforeAndAfterPseudoElements(element) {
+    const computedStyle = window.getComputedStyle(element, '::before'),
+          computedStyleAfter = window.getComputedStyle(element, '::after');
+    return computedStyle.getPropertyValue('content') !== 'none' && computedStyleAfter.getPropertyValue('content') !== 'none';
+  }
 
-    // Define sections to animate
-    var sections = $('section.banner, section.story, article#characters, article#place, section#studio, .site-footer');
+  // Define sections to animate
+  const sections = document.querySelectorAll('section.banner, section.story, .story__article, .story#characters, article#place, section#studio, section#oscars, footer.site-footer');
 
-    // Function to update active classes based on scroll position
-    function updateSections() {
-        var scrollPosition = $(window).scrollTop();
+  // Flag to track if banner animation has been applied
+  let bannerAnimationApplied = false;
 
-        sections.each(function() {
-            var top = $(this).offset().top - 100; //starts fading in 200px before top of section
-            var bottom = top + $(this).height() + 100; //starts fading out 200px after bottom
+  // Section Intersecting Observer
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const section = entry.target;
+      const sectionIndex = Array.prototype.indexOf.call(sections, section); // Get section index
 
-            if (scrollPosition >= top && scrollPosition <= bottom) {
-                $(this).addClass('activated');
-            } else {
-                $(this).removeClass('activated');
-            }
-        });
-    }
+      if (entry.isIntersecting) {
+        // Banner animation (one-time)
+        if (section.classList.contains('banner') && !bannerAnimationApplied) {
+          section.classList.add('banner-slide-down', 'activated');
 
-    // Function to handle animations for sections in viewport
-    function handleAnimations() {
-        var scroll = $(window).scrollTop();
+          const bannerLogo = section.querySelector('.banner-logo');
+          if (bannerLogo) {
+            bannerLogo.classList.add('section-title');
+          }
+          $('#floating-logo').addClass('float-logo');
+          bannerAnimationApplied = true;
+        } else {
+          // Other sections animation
+          const lastChildP = section.querySelector('p:last-of-type');
+          if (lastChildP) {
+            lastChildP.classList.add('section-fade-in', 'activated');
+          }
 
-        sections.each(function() {
-            var top = $(this).offset().top - .5; //starts fading in 200px before top of section
-            var bottom = top + $(this).height() + .5; //starts fading out 200px after bottom
+          // Section content animation (headings & pseudo-elements)
+          const elements = section.querySelectorAll('h1, h2, article, div, footer.site-footer');
+          if (elements) {
+            elements.forEach((element) => {
+              element.classList.add('section-title', 'activated');
+              if (hasBeforeAndAfterPseudoElements(element)) {
+                element.classList.add('section-title');
+              }
+            });
+          }
+        }
+      } else if (sectionIndex > 0 && !entry.isIntersecting) {
+        // Reset animations for sections out of view (except banner)
+        if (!section.classList.contains('banner')) {
+          const elements = section.querySelectorAll('.section-fade-in, .section-title');
+          if (elements) {
+            elements.forEach((element) => element.classList.remove('section-fade-in', 'section-title', 'activated'));
+          }
+        }
+      }
+    });
+  }, { threshold: 0.3 });
 
-            if (scroll >= top && scroll <= bottom) {
-                $(this).addClass('activated');
-            } else {
-                $(this).removeClass('activated');
-            }
-        });
-    }
+  // Minimum viewport height logic
+  let previousScrollY = 0;
+  $(window).scroll(function() {
+    const currentScrollY = $(window).scrollTop();
+    const windowHeight = $(window).height();
 
-    // Call handleAnimations on initial load and scroll
-    $(window).on('load scroll', function() {
-        handleAnimations();
-        updateSections();
+    // Check if all sections are out of view
+    let allSectionsOutOfView = true;
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      if (sectionTop < currentScrollY + windowHeight && sectionTop + sectionHeight > currentScrollY) {
+        allSectionsOutOfView = false;
+        return false; // Exit loop after finding a visible section
+      }
     });
 
-    // Test video element
-    var video = $('video');
-    if (video.length > 0) {
-        video.each(function() {
-            if (this.readyState === 4) {
-                console.log("Video is ready to play");
-            } else {
-                console.log("Video is not ready to play");
-                var posterURL = $(this).attr('poster');
-                if (posterURL) {
-                    console.log("Poster URL: ", posterURL);
-                    $('<img>').attr('src', posterURL).insertAfter($(this));
-                }
-            }
-        });
-    } else {
-        console.log("No video element found");
+    // Handle reaching the end (no sections visible)
+    if (allSectionsOutOfView && currentScrollY > previousScrollY) {
+      // Trigger your desired visual cue or animation for reaching the end
+      console.log("Reached the end of content!"); // Replace with your logic
     }
+
+    previousScrollY = currentScrollY;
+  });
+
+  sections.forEach((section) => {
+    sectionObserver.observe(section);
+  });
 });
