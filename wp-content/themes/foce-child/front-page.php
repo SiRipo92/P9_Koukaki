@@ -10,13 +10,13 @@ get_header();
                     <source src="<?php echo get_stylesheet_directory_uri() . '/assets/videos/Studio+Koukaki-video.mp4'; ?>" type="video/mp4">
                 </video>
             </div>
-            <div class= "banner-video" id="banner-logo">
-                <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">
+            <div class= "banner-logo" id="banner-logo">
+                <img id="floating-logo" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">
             </div>
         </section>
 
 
-        <section id="#story" class="story">
+        <section id="story" class="story">
             <h2>L'histoire</h2>
             <article id="" class="story__article">
                 <p><?php echo get_theme_mod('story'); ?></p>
