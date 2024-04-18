@@ -1,47 +1,23 @@
 /* Variables */
-
-
-/////// NEED TO FIX THIS
-/// REDO ANIMATION CLASSES
-/// Need to set opacity to zero for sections (in JS) as an initial baseline and then the banner
-/// will be .activated with a class.
-/// 
-/// need to go to custom.scss file and add the opacity and transitions directly into the elements to be modified
-
 $in: ease-in;
 $out: ease-out;
 $inOut: ease-in-out;
 $anim-delay: 0.5s;
-$anim-dur: .75s;
+$anim-dur: 0.5s;
 
 /* Keyframes */
 @keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-@keyframes slide-down {
+@keyframes fade-in-and-up {
   from {
-    transform: translateY(-300px);
     opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slide-up {
-  from {
     transform: translateY(100px);
   }
   to {
+    opacity: 1;
     transform: translateY(0);
   }
 }
@@ -56,7 +32,7 @@ $anim-dur: .75s;
     transform: translate3d(10px, -10px, 5px) scale(1.2);
   }
   50% {
-    transform: translate3d(-20px, 20px, 5px) scale(1.5);
+    transform: translate3d(5px, 10px, -5px) scale(1);
   }
 }
 
@@ -69,36 +45,22 @@ $anim-dur: .75s;
   }
 }
 
-/* Mixins */
-@mixin banner-anim {
-  transform: translateY(300px), scale(0);
-  opacity: 0;
-  animation: slide-up $anim-dur $in;
-
-  &.activated {
-    transform: translateY(0), scale(1);
-    opacity: 1;
+@keyframes fade-in-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
 }
 
-@mixin simple-fade-in {
-  opacity: 0;
-  animation: fade-in $anim-dur 1 $in;
-}
-
-@mixin slide-up {
-  transform: translateY(100px);  // Initial positioning
-  animation: slide-up $anim-dur $in;  // Reference existing keyframe
-}
-
-@mixin slide-down {
-  transform: translateY(-300px);  // Initial positioning
-  animation: slide-down $anim-dur $in;  // Reference existing keyframe
-}
-
+/* Mixins */
 @mixin float-logo {
-  transform: translateY(0), scale(1.10);
-  animation: slide-up $anim-dur $in 3000ms, float-logo 1.5s infinite forwards;
+  transform: scale(1.10);
+  animation: float-logo 1.5s infinite 3s forwards;
 }
 
 @mixin spin {
@@ -106,47 +68,51 @@ $anim-dur: .75s;
   animation: rotate 2s infinite linear;
 }
 
+@mixin banner-slide-down {
+  transform: translateY(-100px);
+  animation: fade-in-slide-down $anim-dur 1 $in forwards;
+}
+
+@mixin section-fade-in {
+  transform: translateY(100px) $anim-dur $in forwards;
+  animation: fade-in-and-up $anim-dur $inOut forwards;
+
+}
 /* Animation Classes */
 
-// For fading in sections
-.reveal {
-  @include simple-fade-in;
-
-  &.activated {
-    opacity: 1;
-  }
-}
-
-// For sliding up content
-.section-content-up {
-  @include slide-up;
-
-  &.activated {
-    transform: translateY(0);
-  }
-}
-
-// For floating logo
-.float-logo {
-  @include float-logo;
-
-  &.activated {
-    transform: translateY(0) scale(1);
-  }
-}
-
-.spin {
+.flower-spin {
   @include spin;
 
-  &.activated {
+  .activated {
     transform: rotate(360deg);
   }
 }
 
-.banner-slide-down {
-  @include slide-down;
+.section-fade-in {
+@include section-fade-in;
+  &.activated {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+.banner-slide-down {
+  @include banner-slide-down;
   &.activated {
     transform: translateY(0);
+  }
+}
+
+.section-title {
+  @include section-fade-in;
+  &.activated {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.float-logo {
+  @include float-logo;
+  &.activated {
+    transform: scale(1);
   }
 }

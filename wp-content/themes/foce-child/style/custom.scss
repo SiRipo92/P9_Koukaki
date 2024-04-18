@@ -19,14 +19,14 @@
      justify-content: center;
      align-items: center;
      position: relative;
-     @include slide-down;
      opacity: 0;
+
     &.activated {
         transform: translateY(0);
         opacity: 1;
 
      & > .video-container {
-         position: absolute;
+         position: relative;
          top: 0;
          left: 0;
          width: 100%;
@@ -41,24 +41,22 @@
         }
     }
 }
- #banner-logo  {
+
+ div#banner-logo  {
     position: relative;
     width: 100%;
-    text-align: center;
-    z-index: 1;
+    height: 100%;
+    display:inline-block;
+    overflow: hidden;
     opacity: 1;
+    object-fit:contain;
 
-    &.activated {
-        transform: translateY(0);
-        & img {
-            position: absolute;
-            margin-top: 0;
-            width: 50%;
-            z-index: 100;
-            perspective: 1000px;
-            &.activated {
-                transform: translateY(0) scale(1);
-                }
-            }
-    }
- }    
+    & > img {
+        position: absolute;
+        width: 50%;
+        left: 50%;
+        bottom: 50%;
+        z-index: 1000;
+        opacity:1;
+    }    
+ }

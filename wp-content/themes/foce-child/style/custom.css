@@ -13,28 +13,18 @@
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(-50px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
-@keyframes slide-down {
+@keyframes fade-in-and-up {
   from {
-    transform: translateY(-300px);
     opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-@keyframes slide-up {
-  from {
     transform: translateY(100px);
   }
   to {
+    opacity: 1;
     transform: translateY(0);
   }
 }
@@ -46,7 +36,7 @@
     transform: translate3d(10px, -10px, 5px) scale(1.2);
   }
   50% {
-    transform: translate3d(-20px, 20px, 5px) scale(1.5);
+    transform: translate3d(5px, 10px, -5px) scale(1);
   }
 }
 @keyframes rotate {
@@ -57,46 +47,58 @@
     transform: rotate(360deg);
   }
 }
+@keyframes fade-in-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /* Mixins */
 /* Animation Classes */
-.reveal {
-  opacity: 0;
-  animation: fade-in 0.75s 1 ease-in;
+.flower-spin {
+  transform: rotate(0deg);
+  animation: rotate 2s infinite linear;
 }
-.reveal.activated {
-  opacity: 1;
+.flower-spin .activated {
+  transform: rotate(360deg);
 }
 
-.section-content-up {
-  transform: translateY(100px);
-  animation: slide-up 0.75s ease-in;
+.section-fade-in {
+  transform: translateY(100px) 0.5s ease-in forwards;
+  animation: fade-in-and-up 0.5s ease-in-out forwards;
 }
-.section-content-up.activated {
+.section-fade-in.activated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.banner-slide-down {
+  transform: translateY(-100px);
+  animation: fade-in-slide-down 0.5s 1 ease-in forwards;
+}
+.banner-slide-down.activated {
+  transform: translateY(0);
+}
+
+.section-title {
+  transform: translateY(100px) 0.5s ease-in forwards;
+  animation: fade-in-and-up 0.5s ease-in-out forwards;
+}
+.section-title.activated {
+  opacity: 1;
   transform: translateY(0);
 }
 
 .float-logo {
-  transform: translateY(0), scale(1.1);
-  animation: slide-up 0.75s ease-in 3000ms, float-logo 1.5s infinite forwards;
+  transform: scale(1.1);
+  animation: float-logo 1.5s infinite 3s forwards;
 }
 .float-logo.activated {
-  transform: translateY(0) scale(1);
-}
-
-.spin {
-  transform: rotate(0deg);
-  animation: rotate 2s infinite linear;
-}
-.spin.activated {
-  transform: rotate(360deg);
-}
-
-.banner-slide-down {
-  transform: translateY(-300px);
-  animation: slide-down 0.75s ease-in;
-}
-.banner-slide-down.activated {
-  transform: translateY(0);
+  transform: scale(1);
 }
 
 .banner {
@@ -107,8 +109,6 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  transform: translateY(-300px);
-  animation: slide-down 0.75s ease-in;
   opacity: 0;
 }
 .banner.activated {
@@ -116,7 +116,7 @@
   opacity: 1;
 }
 .banner.activated > .video-container {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -130,23 +130,21 @@
      object-fit: cover;
 }
 
-#banner-logo {
+div#banner-logo {
   position: relative;
   width: 100%;
-  text-align: center;
-  z-index: 1;
+  height: 100%;
+  display: inline-block;
+  overflow: hidden;
   opacity: 1;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
-#banner-logo.activated {
-  transform: translateY(0);
-}
-#banner-logo.activated img {
+div#banner-logo > img {
   position: absolute;
-  margin-top: 0;
   width: 50%;
-  z-index: 100;
-  perspective: 1000px;
-}
-#banner-logo.activated img.activated {
-  transform: translateY(0) scale(1);
+  left: 50%;
+  bottom: 50%;
+  z-index: 1000;
+  opacity: 1;
 }/*# sourceMappingURL=custom.css.map */
