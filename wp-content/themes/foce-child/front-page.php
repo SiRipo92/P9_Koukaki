@@ -5,13 +5,13 @@ get_header();
 
     <main id="primary" class="site-main">
         <section class="banner">
-            <div class="banner-wrapper">
-                <div class="banner-container">
-                    <video class="banner-video" role="banner-video" poster="<?php echo get_stylesheet_directory_uri(). '/assets/images/banner.png'; ?>" autoplay muted loop>
-                        <source src="<?php echo get_stylesheet_directory_uri() . '/assets/videos/Studio+Koukaki-video.mp4'; ?>" type="video/mp4">
-                    </video>
-                    <img id="banner-logo" role="banner-logo" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">
-                </div>
+            <div class="video-container">
+                <video class="banner-video" autoplay muted loop>
+                    <source src="<?php echo get_stylesheet_directory_uri() . '/assets/videos/Studio+Koukaki-video.mp4'; ?>" type="video/mp4">
+                </video>
+            </div>
+            <div class= "banner-video" id="banner-logo">
+                <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">
             </div>
         </section>
 
@@ -25,7 +25,7 @@ get_header();
             <?php include(get_stylesheet_directory() . '/template-partials/page-characters.php');?>;
 
             <article id="place">
-                <div>∑
+                <div>
                     <h3>Le Lieu</h3>
                     <p><?php echo get_theme_mod('place'); ?></p>
                 </div>
