@@ -8,71 +8,18 @@
  Description: Thème enfant à l'ocasion de la nomination aux Oscars Shorts
  Version: 0.1
  */
-/*********************** KEYFRAME ANIMATIONS ***********************/
-/************************************************** SECTION TRANSITION CLASSES *****************************************************/
-/* Define CSS for sections */
-section.banner,
-section.story,
-article#characters,
-article#place,
-section#studio,
-.site-footer {
-  opacity: 0; /* Initially set opacity to 0 */
-  transition: opacity 1s ease-in-out; /* Apply transition for smooth opacity change */
-}
-
-section.banner.activated,
-section.story.activated,
-article#characters.activated,
-article#place.activated,
-section#studio.activated,
-.site-footer.activated {
-  opacity: 1; /* Set opacity to 1 when section becomes activated */
-}
-
-/************************************************** BANNER TRANSITION CLASSES *****************************************************/
-/* Define CSS for Logo */
-.LogoFloat {
-  animation-name: banner-float;
-  animation-duration: 500ms;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-}
-
-.rotate {
-  animation-name: rotate;
-  animation-duration: 1turn;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-.Section-Title {
-  animation-name: slide-up;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-  animation-timing-function: ease-in;
-}
-
-/************************* Global Keyframes *************************/
-@keyframes slide-up {
+/* Variables */
+/* Keyframes */
+@keyframes fade-in {
   from {
-    transform: translateY(300px);
     opacity: 0;
+    transform: translateY(-50px);
   }
   to {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
   }
 }
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-/************************* BANNER *************************/
 @keyframes slide-down {
   from {
     transform: translateY(-300px);
@@ -83,74 +30,123 @@ section#studio.activated,
     opacity: 1;
   }
 }
-@keyframes banner-float {
-  0% {
-    transform: scale(1);
+@keyframes slide-up {
+  from {
+    transform: translateY(100px);
   }
-  25% {
-    transform: scale(1.2);
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes float-logo {
+  0%, 100% {
+    transform: translate3d(-10px, 10px, 0px) scale(1);
+  }
+  25%, 75% {
+    transform: translate3d(10px, -10px, 5px) scale(1.2);
   }
   50% {
-    transform: scale(1.5);
-  }
-  75% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
+    transform: translate3d(-20px, 20px, 5px) scale(1.5);
   }
 }
-.banner {
-  background-image: none;
-  width: 100%;
-  box-sizing: border-box;
-  position: relative;
-  background-image: none;
-  min-height: 806px;
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Mixins */
+/* Animation Classes */
+.reveal {
+  opacity: 0;
+  animation: fade-in 0.75s 1 ease-in;
+}
+.reveal.activated {
+  opacity: 1;
 }
 
-.banner-wrapper {
-  overflow: hidden;
-  position: absolute;
+.section-content-up {
+  transform: translateY(100px);
+  animation: slide-up 0.75s ease-in;
+}
+.section-content-up.activated {
+  transform: translateY(0);
+}
+
+.float-logo {
+  transform: translateY(0), scale(1.1);
+  animation: slide-up 0.75s ease-in 3000ms, float-logo 1.5s infinite forwards;
+}
+.float-logo.activated {
+  transform: translateY(0) scale(1);
+}
+
+.spin {
+  transform: rotate(0deg);
+  animation: rotate 2s infinite linear;
+}
+.spin.activated {
+  transform: rotate(360deg);
+}
+
+.banner-slide-down {
+  transform: translateY(-300px);
+  animation: slide-down 0.75s ease-in;
+}
+.banner-slide-down.activated {
+  transform: translateY(0);
+}
+
+.banner {
+  width: 100%;
+  min-height: 806px;
+  background-size: cover;
   display: flex;
   justify-content: center;
-  align-content: center;
-  min-width: 100%;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1;
+  align-items: center;
+  position: relative;
+  transform: translateY(-300px);
+  animation: slide-down 0.75s ease-in;
+  opacity: 0;
 }
-
-.banner-container {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  background-image: url("../assets/images/banner.png");
-  background-attachment: scroll;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.banner.activated {
+  transform: translateY(0);
+  opacity: 1;
 }
-.banner-container .banner-video {
+.banner.activated > .video-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  perspective: 1000px;
-  z-index: 1;
+  z-index: -1;
 }
-.banner-container #banner-logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+.banner.activated > .video-container video {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  animation: banner-float;
+}
+
+#banner-logo {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+  opacity: 1;
+}
+#banner-logo.activated {
+  transform: translateY(0);
+}
+#banner-logo.activated img {
+  position: absolute;
+  margin-top: 0;
+  width: 50%;
+  z-index: 100;
+  perspective: 1000px;
+}
+#banner-logo.activated img.activated {
+  transform: translateY(0) scale(1);
 }/*# sourceMappingURL=custom.css.map */
