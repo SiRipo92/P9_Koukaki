@@ -1,91 +1,69 @@
-jQuery(document).ready(function($) {
-  // Function to check if an element has ::before and ::after pseudo-elements
-  function hasBeforeAndAfterPseudoElements(element) {
-    const computedStyle = window.getComputedStyle(element, '::before'),
-          computedStyleAfter = window.getComputedStyle(element, '::after');
-    return computedStyle.getPropertyValue('content') !== 'none' && computedStyleAfter.getPropertyValue('content') !== 'none';
-  }
+(function($) {
 
-  // Define sections to animate
-  const sections = document.querySelectorAll('section.banner, section.story, .story__article, .story#characters, article#place, section#studio, section#oscars, footer.site-footer');
-
-  // Flag to track if banner animation has been applied
-  let bannerAnimationApplied = false;
-
-  // Section Intersecting Observer
+  // Make sections appear on scroll
   const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      const section = entry.target;
-      const sectionIndex = Array.prototype.indexOf.call(sections, section); // Get section index
-
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Banner animation (one-time)
-        if (section.classList.contains('banner') && !bannerAnimationApplied) {
-          section.classList.add('banner-slide-down', 'activated');
-
-          const bannerLogo = section.querySelector('.banner-logo');
-          if (bannerLogo) {
-            bannerLogo.classList.add('section-title');
-          }
-          $('#floating-logo').addClass('float-logo');
-          bannerAnimationApplied = true;
-        } else {
-          // Other sections animation
-          const lastChildP = section.querySelector('p:last-of-type');
-          if (lastChildP) {
-            lastChildP.classList.add('section-fade-in', 'activated');
-          }
-
-          // Section content animation (headings & pseudo-elements)
-          const elements = section.querySelectorAll('h1, h2, article, div, footer.site-footer');
-          if (elements) {
-            elements.forEach((element) => {
-              element.classList.add('section-title', 'activated');
-              if (hasBeforeAndAfterPseudoElements(element)) {
-                element.classList.add('section-title');
-              }
-            });
-          }
-        }
-      } else if (sectionIndex > 0 && !entry.isIntersecting) {
-        // Reset animations for sections out of view (except banner)
-        if (!section.classList.contains('banner')) {
-          const elements = section.querySelectorAll('.section-fade-in, .section-title');
-          if (elements) {
-            elements.forEach((element) => element.classList.remove('section-fade-in', 'section-title', 'activated'));
-          }
+        entry.target.classList.add('fade-in');
+      } else {
+        if (entry.target) {
+          entry.target.classList.remove('fade-in');
         }
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.2 });
 
-  // Minimum viewport height logic
-  let previousScrollY = 0;
-  $(window).scroll(function() {
-    const currentScrollY = $(window).scrollTop();
-    const windowHeight = $(window).height();
+  document.querySelectorAll(".animation-item").forEach(sectionInSite => sectionObserver.observe(sectionInSite));
 
-    // Check if all sections are out of view
-    let allSectionsOutOfView = true;
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      if (sectionTop < currentScrollY + windowHeight && sectionTop + sectionHeight > currentScrollY) {
-        allSectionsOutOfView = false;
-        return false; // Exit loop after finding a visible section
+  const titlesObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('title-anim');
       }
     });
+  }, { threshold: 0.9 });
 
-    // Handle reaching the end (no sections visible)
-    if (allSectionsOutOfView && currentScrollY > previousScrollY) {
-      // Trigger your desired visual cue or animation for reaching the end
-      console.log("Reached the end of content!"); // Replace with your logic
-    }
+  document.querySelectorAll("h2 > span").forEach(sectionTitle => titlesObserver.observe(sectionTitle));
 
-    previousScrollY = currentScrollY;
+  // Parallax effect
+  $(window).scroll(function () {
+    $('.banner-container').css({'transform': 'translateY(' + ($(this).scrollTop() * 0.7) + 'px)'});
+    $('.hero-header__logo').css({'transform': 'translate(-50%, -50%) translateY(' + ($(this).scrollTop() * 0.7) + 'px)'});
   });
 
-  sections.forEach((section) => {
-    sectionObserver.observe(section);
-  });
-});
+  // Import Swiper
+  document.addEventListener('DOMContentLoaded', function() {
+    const swiper = new Swiper('.swiper-main-container', {
+      slidesPerView: "auto",
+      effect: "coverflow",
+      spaceBetween: 20, // Space between slides (default: 0)
+      loop: true,// infinite looping (default: false)
+      grabCursor: true,
+      centeredSlides: true,
+      loopAdditionalSlides: 1,
+      autoplay: {
+        delay: 2000
+      }, 
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
+      pagination: {
+        el: '.swiper-pagination', // Selector for pagination element (optional)
+      },
+      breakpoints: {
+        // Optional - Set different options for different screen sizes
+        640: {
+          slidesPerView: 2, 
+        },
+        1024: {
+          slidesPerView: 3, 
+        },
+      }
+    });
+  }); 
+
+})(jQuery); // Added the missing closing parenthesis here
