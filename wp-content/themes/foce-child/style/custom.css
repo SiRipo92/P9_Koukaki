@@ -8,8 +8,14 @@
  Description: Thème enfant à l'ocasion de la nomination aux Oscars Shorts
  Version: 0.1
  */
-/* Variables */
-/* Keyframes */
+@keyframes spin-flowers {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -18,133 +24,305 @@
     opacity: 1;
   }
 }
-@keyframes fade-in-and-up {
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fade-in-slide-up {
   from {
     opacity: 0;
-    transform: translateY(100px);
+    transform: translateY(300px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-@keyframes float-logo {
-  0%, 100% {
-    transform: translate3d(-10px, 10px, 0px) scale(1);
-  }
-  25%, 75% {
-    transform: translate3d(10px, -10px, 5px) scale(1.2);
-  }
-  50% {
-    transform: translate3d(5px, 10px, -5px) scale(1);
-  }
-}
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+    visibility: visible;
   }
 }
 @keyframes fade-in-slide-down {
   from {
     opacity: 0;
-    transform: translateY(-100px);
+    transform: translateY(-300px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    visibility: visible;
   }
 }
-/* Mixins */
-/* Animation Classes */
-.flower-spin {
-  transform: rotate(0deg);
-  animation: rotate 2s infinite linear;
+@keyframes slide-up {
+  from {
+    transform: translateY(50px);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
-.flower-spin .activated {
-  transform: rotate(360deg);
+@keyframes title-fade-in {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes title-slide-up {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  30% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  80% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes floating {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  10%, 90% {
+    transform: translate3d(5px, 20px, 15px);
+  }
+  20%, 80% {
+    transform: translate3d(10px, -10px, -10px);
+  }
+  30%, 70% {
+    transform: translate3d(5px, 10px, 10px);
+  }
+  40%, 60% {
+    transform: translate3d(-5px, -5px, -5px);
+  }
+  50% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.title-anim {
+  animation: title-slide-up 1s ease-in backwards;
 }
 
-.section-fade-in {
-  transform: translateY(100px) 0.5s ease-in forwards;
-  animation: fade-in-and-up 0.5s ease-in-out forwards;
-}
-.section-fade-in.activated {
-  opacity: 1;
-  transform: translateY(0);
+.fade-in {
+  animation: fade-in 1s backwards;
 }
 
-.banner-slide-down {
-  transform: translateY(-100px);
-  animation: fade-in-slide-down 0.5s 1 ease-in forwards;
-}
-.banner-slide-down.activated {
-  transform: translateY(0);
+.fade-out {
+  animation: fade-out 2s forwards;
 }
 
-.section-title {
-  transform: translateY(100px) 0.5s ease-in forwards;
-  animation: fade-in-and-up 0.5s ease-in-out forwards;
-}
-.section-title.activated {
-  opacity: 1;
-  transform: translateY(0);
+:root {
+  --flowers-rotation-speed: 10s;
 }
 
-.float-logo {
-  transform: scale(1.1);
-  animation: float-logo 1.5s infinite 3s forwards;
-}
-.float-logo.activated {
-  transform: scale(1);
+.story h2::after, .story__article::after,
+#studio h2::before, #studio h2::after,
+#place .nomination::before,
+.nomination::after,
+.site-footer ul::after {
+  animation: spin-flowers var(--flowers-rotation-speed) linear infinite;
 }
 
 .banner {
-  width: 100%;
-  min-height: 806px;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  opacity: 0;
-}
-.banner.activated {
-  transform: translateY(0);
-  opacity: 1;
-}
-.banner.activated > .video-container {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-.banner.activated > .video-container video {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  animation: fade-in-slide-down 1s 1 ease-in-out backwards;
 }
 
-div#banner-logo {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: inline-block;
-  overflow: hidden;
-  opacity: 1;
-  -o-object-fit: contain;
-     object-fit: contain;
+.hero-header__logo img {
+  animation: fade-in-slide-up 1s 1 ease-in-out backwards, floating 1s 1.5s infinite;
 }
-div#banner-logo > img {
+
+h2, h3 {
+  box-sizing: border-box;
+  background-size: 100%;
+  text-align: center;
+  overflow: hidden;
+  transition-duration: 0.6s;
+}
+h2 span, h3 span {
+  display: block;
+}
+
+.hero-header {
+  position: relative;
+  overflow: hidden;
+  height: 807px;
+  margin: 0;
+  padding: 0;
+}
+
+.banner-container {
+  width: 100%;
+  height: 807px;
   position: absolute;
-  width: 50%;
+  perspective: 1000px;
+}
+.banner-container .banner {
+  overflow: hidden;
+  height: 100%;
+  z-index: 0;
+}
+
+.banner__video {
+  max-width: 1440px;
+}
+
+.hero-header__logo {
+  position: absolute;
+  top: 50%;
   left: 50%;
-  bottom: 50%;
+  transform: translate(-50%, -50%);
+}
+.hero-header__logo img {
+  position: sticky;
   z-index: 1000;
-  opacity: 1;
+}
+
+.story {
+  overflow: hidden;
+  padding: 50px 0;
+}
+
+.story__article h2 {
+  padding: 0 10%;
+}
+
+.story #characters {
+  display: flex;
+  flex-direction: row;
+  margin: 2em 0;
+}
+
+.swiper-slide {
+  margin: 0 10px;
+}
+.swiper-slide figure {
+  width: 100%;
+}
+
+.story #characters h3 {
+  background-position: left;
+  display: inline-block;
+  padding: 0 5%;
+}
+
+.story #place h3 {
+  margin-bottom: 0;
+  padding-left: 70px;
+}
+
+#studio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#studio h2 {
+  padding: 0 5%;
+}
+
+.nomination {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  margin-top: 100px;
+  height: 450px;
+  padding: 100px 0 50px 0;
+}
+.nomination::before {
+  content: url("../assets/images/Sunflower.png");
+  position: absolute;
+  left: 4em;
+  top: -100px;
+}
+.nomination::after {
+  content: url("../assets/images/orchid.png");
+  position: absolute;
+  right: 4em;
+  top: -100px;
+}
+
+.nomination__title {
+  flex: 3;
+  display: flex;
+  background-image: url("../assets/images/orange_nomination_bg.png");
+  background-repeat: no-repeat;
+  background-size: scale-down;
+  height: 300px;
+  align-self: center;
+  margin-left: -10px;
+  padding-right: 10px;
+  flex-shrink: 0;
+  overflow: auto;
+}
+
+.oscars-content {
+  width: 100%;
+  flex: 1;
+  margin: 20px 30px;
+  max-width: 60vh;
+  max-height: 100vh;
+  overflow: auto;
+}
+
+.nomination__image {
+  flex: 1;
+  height: 100%;
+  min-width: 30%;
+  align-items: center;
+  display: flex;
+  overflow: auto;
+}
+.nomination__image img {
+  width: auto;
+  -o-object-fit: fill;
+     object-fit: fill;
+}
+
+h2, h3 {
+  box-sizing: border-box;
+  background-size: 100%;
+  text-align: center;
+  overflow: hidden;
+  transition-duration: 0.6s;
+}
+h2 span, h3 span {
+  display: block;
+}
+
+.site-footer {
+  position: relative;
+  display: flex;
+  padding-top: 18em;
+  padding-bottom: 1em;
+  overflow: hidden;
+}
+.site-footer::before {
+  content: url("");
+  position: absolute;
+  left: 4em;
+  top: 0em;
+}
+.site-footer::after {
+  content: url("");
+  position: absolute;
+  right: -4em;
+  bottom: 7.8em;
 }/*# sourceMappingURL=custom.css.map */

@@ -8,55 +8,205 @@
  Version: 0.1
  */
 
- @import 'animations'; 
+ @mixin keyframes($animation-name) {
+    @keyframes #{$animation-name} {
+      @content;
+    }
+  }
+  
+ @import 'animations';
+
+// Global
+
+h2, h3 {
+    box-sizing: border-box;
+    background-size: 100%;
+    text-align: center;
+    overflow: hidden;
+    transition-duration: 0.6s;
+
+    span {
+        display: block;
+    }
+}
+/////////////////// START OF HERO BANNER SECTION //////////////////////
 
  // Section: Banner
- .banner {
-     width: 100%;
-     min-height: 806px;
-     background-size: cover;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     position: relative;
-     opacity: 0;
-
-    &.activated {
-        transform: translateY(0);
-        opacity: 1;
-
-     & > .video-container {
-         position: relative;
-         top: 0;
-         left: 0;
-         width: 100%;
-         height: 100%;
-         z-index: -1;
-
-            & video {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
+.hero-header {
+    position: relative;
+    overflow: hidden;
+    height: 807px;
+    margin: 0;
+    padding: 0;
+}
+.banner-container {
+    width: 100%;
+    height: 807px;
+    position: absolute;
+    perspective: 1000px;
+        .banner {
+        overflow: hidden;
+        height: 100%;
+        z-index: 0;
         }
+}
+.banner__video {
+    max-width: 1440px;
+}
+
+.hero-header__logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); // Center the logo
+        img {
+        position:sticky;
+        z-index: 1000;
+        }
+}
+
+/////////////////// END OF BANNER SECTION //////////////////////
+/////////////////// START OF STORY SECTION //////////////////////
+
+.story {
+    overflow: hidden;
+    padding: 50px 0;
+}
+.story__article h2 {
+    padding: 0 10%;
+}
+//// START OF CHARACTER SWIPER ////
+
+.story #characters {
+    display: flex;
+    flex-direction: row;
+    margin: 2em 0;
+}
+
+.swiper-slide {
+    margin: 0 10px; // Margin between slides
+
+    figure {
+        width: 100%;
     }
 }
 
- div#banner-logo  {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display:inline-block;
-    overflow: hidden;
-    opacity: 1;
-    object-fit:contain;
+.story #characters h3 {
+    background-position: left;
+    display: inline-block;
+    padding: 0 5%;
+}
 
-    & > img {
+
+/////////////////// END OF STORY SECTION //////////////////////
+/////////////////// START OF STUDIO SECTION //////////////////////
+
+.story #place h3 {
+    margin-bottom: 0;
+    padding-left: 70px;
+} 
+
+#studio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+        padding: 0 5%;
+    }
+}
+.nomination {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    margin-top: 100px;
+
+    height: 450px;
+    padding: 100px 0 50px 0;
+    &::before {
+        content: url('../assets/images/Sunflower.png');
         position: absolute;
-        width: 50%;
-        left: 50%;
-        bottom: 50%;
-        z-index: 1000;
-        opacity:1;
-    }    
- }
+        left: 4em;
+        top:-100px;
+    }
+    &::after {
+        content: url('../assets/images/orchid.png');
+        position: absolute;
+        right: 4em;
+        top: -100px;
+      }
+}
+
+.nomination__title {
+    flex: 3; // This will take up 75% of the space
+    display: flex;
+    background-image : url('../assets/images/orange_nomination_bg.png');
+    background-repeat: no-repeat;
+    background-size: scale-down;
+    height: 300px;
+    align-self: center;
+    margin-left: -10px;
+    padding-right: 10px;
+    flex-shrink: 0;
+    overflow: auto;
+}
+
+.oscars-content {
+    width: 100%;
+    flex: 1;
+    margin: 20px 30px;
+    max-width: 60vh;
+    max-height: 100vh;
+    overflow: auto;
+}
+
+.nomination__image {
+    flex: 1; // This will take up 25% of the space
+    height: 100%;
+    min-width: 30%;
+    align-items: center;
+    display: flex;
+    overflow: auto;
+    img {
+        width: auto;
+        object-fit: fill;
+    }
+}
+/////////////////// START OF STUDIO SECTION //////////////////////
+
+h2, h3 {
+    box-sizing: border-box;
+    background-size: 100%;
+    text-align: center;
+    overflow: hidden;
+    transition-duration: 0.6s;
+
+    span {
+        display: block;
+    }
+}
+
+.site-footer {
+    position: relative;
+    display: flex;
+    padding-top: 18em;
+    padding-bottom: 1em;
+    overflow: hidden;
+  
+    &::before {
+      content: url('');
+      position: absolute;
+      left: 4em;
+      top: 0em;
+    }
+    &::after {
+      content: url('');
+      position: absolute;
+      right: -4em;
+      bottom: 7.8em;
+    }
+}
