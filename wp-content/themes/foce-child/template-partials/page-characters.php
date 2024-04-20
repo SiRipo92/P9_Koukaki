@@ -12,7 +12,7 @@
     ?>
 <article id="characters" class="animation-item">
         <h3><span class ="characters__title">Les personnages</span></h3>
-        <div class="swiper swiper-main-container">
+        <div class="swiper-main-container">
             <?php
             while ( $characters_query->have_posts() ) {
                 $characters_query->the_post();
