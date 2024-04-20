@@ -48,7 +48,7 @@ get_header();
 
 
 <!--    STUDIO__NOMINATION -->
-<?php get_template_part ('template-partials/page-nomination.php'); ?>
+<?php get_template_part ('template-partials/page-nomination'); ?>
 
 </main>
 <?php 
