@@ -27,9 +27,9 @@ get_header();
         </article>
         
 <!--  STORY_CHARACTERS / SWIPER SLIDER TEMPLATE  -->  
-        <article id="characters" class="animation-item">
+        <article id="characters" class="characters__article animation-item">
             <h3 class="observed-item"><span class ="story__title">Les personnages</span></h3>  
-        <?php get_template_part ('template-partials/page-characters');?>
+            <?php get_template_part ('template-partials/page-characters');?>
         </article>
 <!--  STORY__PLACE -->
 
@@ -46,7 +46,7 @@ get_header();
 <!-- ************************************ SECTION STUDIO--> 
 
 <section id="studio" class= "animation-item">
-    <h2 class="observed-item"><span class="animation-item">Studio Koukaki<span></h2>
+    <h2 class="observed-item"><span class="studio__title">Studio Koukaki<span></h2>
     <div>
         <p>Acteur majeur de l’animation, Koukaki est un studio intégré fondé en 2012 qui créé, produit et distribue des programmes originaux dans plus de 190 pays pour les enfants et les adultes. Nous avons deux sections en activité : le long métrage et le court métrage. Nous développons des films fantastiques, principalement autour de la culture de notre pays natal, le Japon.</p>
         <p>Avec une créativité et une capacité d’innovation mondialement reconnues, une expertise éditoriale et commerciale à la pointe de son industrie, le Studio Koukaki se positionne comme un acteur incontournable dans un marché en forte croissance. Koukaki construit chaque année de véritables succès et capitalise sur de puissantes marques historiques. Cette année, il vous présente “Fleurs d’oranger et chats errants”.</p>
