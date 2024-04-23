@@ -38,7 +38,7 @@
 @keyframes fade-in-slide-up {
   from {
     opacity: 0;
-    transform: translateY(300px);
+    transform: translateY(80px);
   }
   to {
     opacity: 1;
@@ -102,28 +102,28 @@
     transform: translate3d(5px, 20px, 15px);
   }
   20%, 80% {
-    transform: translate3d(10px, -10px, -10px);
+    transform: translate3d(20px, -20px, -20px);
   }
   30%, 70% {
     transform: translate3d(5px, 10px, 10px);
   }
   40%, 60% {
-    transform: translate3d(-5px, -5px, -5px);
+    transform: translate3d(-20px, -20px, -5px);
   }
   50% {
     transform: translate3d(0, 0, 0);
   }
 }
 .title-anim {
-  animation: title-slide-up 1s ease-in backwards;
+  animation: title-slide-up 1.5s ease-in forwards;
 }
 
-.fade-in {
-  animation: fade-in 1s backwards;
+.fade-in-section {
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
 }
-
-.fade-out {
-  animation: fade-out 2s forwards;
+.fade-in-section.show {
+  opacity: 1;
 }
 
 :root {
@@ -132,18 +132,26 @@
 
 .story h2::after, .story__article::after,
 #studio h2::before, #studio h2::after,
-#place .nomination::before,
-.nomination::after,
+.nomination::before, .nomination::after,
 .site-footer ul::after {
   animation: spin-flowers var(--flowers-rotation-speed) linear infinite;
 }
 
 .banner {
-  animation: fade-in-slide-down 1s 1 ease-in-out backwards;
+  animation: fade-in-slide-down 1.5s 1 ease-in-out backwards;
 }
 
 .hero-header__logo img {
-  animation: fade-in-slide-up 1s 1 ease-in-out backwards, floating 1s 1.5s infinite;
+  animation: fade-in-slide-up 1.5s 1 ease-in backwards, floating 17s 2s ease-in infinite alternate;
+}
+
+.animation-item, .place_title, .story__title, #place h3, .nomination h3, .site-footer h3 {
+  animation: title-slide-up 1.5s ease-in backwards;
+}
+
+.story__text {
+  transform: opacity 1.5s forwards;
+  animation: fade-in 1.5s both alternate;
 }
 
 h2, h3 {
@@ -188,7 +196,6 @@ h2 span, h3 span {
   transform: translate(-50%, -50%);
 }
 .hero-header__logo img {
-  position: sticky;
   z-index: 1000;
 }
 
@@ -197,27 +204,51 @@ h2 span, h3 span {
   padding: 50px 0;
 }
 
-.story__article h2 {
-  padding: 0 10%;
+#characters {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  min-height: 400px;
+}
+#characters h3 {
+  width: 45%;
+  background-size: contain;
 }
 
-.story #characters {
-  display: flex;
-  flex-direction: row;
-  margin: 2em 0;
+.swiper-containter {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-content: center;
+  flex: 1;
+}
+
+.swiper {
+  height: 100%;
+  width: 1440px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1440px;
 }
 
 .swiper-slide {
-  margin: 0 10px;
-}
-.swiper-slide figure {
-  width: 100%;
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
 }
 
-.story #characters h3 {
-  background-position: left;
-  display: inline-block;
-  padding: 0 5%;
+.swiper-slide img {
+  display: block;
+  width: 300px;
+  height: 300px;
 }
 
 .story #place h3 {
@@ -244,6 +275,7 @@ h2 span, h3 span {
   align-content: center;
   margin-top: 100px;
   height: 450px;
+  width: 1440px;
   padding: 100px 0 50px 0;
 }
 .nomination::before {
@@ -264,22 +296,25 @@ h2 span, h3 span {
   display: flex;
   background-image: url("../assets/images/orange_nomination_bg.png");
   background-repeat: no-repeat;
-  background-size: scale-down;
-  height: 300px;
+  background-size: contain;
+  background-position: center;
+  height: 100%;
+  width: 100%;
   align-self: center;
-  margin-left: -10px;
-  padding-right: 10px;
-  flex-shrink: 0;
-  overflow: auto;
+  justify-content: center;
+  flex-basis: 1;
+  overflow: hidden;
 }
 
 .oscars-content {
-  width: 100%;
   flex: 1;
-  margin: 20px 30px;
-  max-width: 60vh;
-  max-height: 100vh;
-  overflow: auto;
+  max-height: 150vh;
+  overflow: hidden;
+}
+.oscars-content .oscars__title {
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px 0;
 }
 
 .nomination__image {

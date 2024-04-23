@@ -33,7 +33,7 @@
 @include keyframes(fade-in-slide-up) {
   from {
     opacity: 0;
-    transform: translateY(300px);
+    transform: translateY(80px);
   }
   to {
     opacity: 1;
@@ -106,14 +106,14 @@
     transform: translate3d(5px, 20px, 15px);
   }
   20%, 80% {
-    transform: translate3d(10px, -10px, -10px);
+    transform: translate3d(20px, -20px, -20px);
 
   }
   30%, 70% {
     transform: translate3d(5px, 10px, 10px);
  }
   40%, 60% {
-    transform: translate3d(-5px, -5px, -5px); 
+    transform: translate3d(-20px, -20px, -5px); 
   }
   50% {
     transform: translate3d(0, 0, 0);
@@ -121,15 +121,19 @@
 }
 
 .title-anim {
-  animation: title-slide-up 1s ease-in backwards;
+  animation: title-slide-up 1.5s ease-in forwards;
 }
 
-.fade-in {
-  animation: fade-in 1s  backwards;
+.fade-in-section {
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  
+  &.show {
+    opacity: 1;
+  }
 }
-.fade-out {
-  animation: fade-out 2s forwards;
-}
+
+
 
 
 ////// Rotating flowers
@@ -140,16 +144,23 @@
 
 .story h2::after, .story__article::after, 
 #studio h2::before, #studio h2::after,
-#place 
 .nomination::before, .nomination::after,
 .site-footer ul::after {
   animation: spin-flowers var(--flowers-rotation-speed) linear infinite;
 }
 
 .banner {
-  animation: fade-in-slide-down 1s 1 ease-in-out backwards;
+  animation: fade-in-slide-down 1.5s 1 ease-in-out backwards;
 }
 
 .hero-header__logo img {
-  animation: fade-in-slide-up 1s 1 ease-in-out backwards, floating 1s 1.5s infinite;
+  animation: fade-in-slide-up 1.5s 1 ease-in backwards, floating 17s 2s ease-in infinite alternate;
+}
+
+.animation-item, .place_title, .story__title, #place h3, .nomination h3, .site-footer h3 {
+  animation: title-slide-up 1.5s ease-in backwards;
+}
+.story__text {
+  transform: opacity 1.5s forwards;
+  animation: fade-in 1.5s both alternate;
 }
