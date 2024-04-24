@@ -16,15 +16,16 @@
   });
 
   // Make titles appear on scroll
+  // This needs more work as some section titles are not being animated or are not being animated correctly
   const titlesObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         $(entry.target).addClass('title-anim');
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.4 });
 
-  document.querySelectorAll("h2 span, h3 span, h4 span").forEach(sectionTitle => titlesObserver.observe(sectionTitle));
+  document.querySelectorAll("h2 span, h3 span, observed-item, studio__title, story__title, characters__title").forEach(sectionTitle => titlesObserver.observe(sectionTitle));
 
   // Parallax effect
   $(window).scroll(function () {
@@ -32,6 +33,7 @@
     $('.hero-header__logo').css({'transform': 'translate(-50%, -50%) translateY(' + ($(this).scrollTop() * 0.7) + 'px)'});
   });
 
+// Swiper slider
   $(document).ready(function() {
     var swiper;
   
