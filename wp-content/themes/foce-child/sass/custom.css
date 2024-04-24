@@ -118,12 +118,8 @@
   animation: title-slide-up 1.5s ease-in forwards;
 }
 
-.fade-in-section {
-  opacity: 0;
-  transition: opacity 2s ease-in-out;
-}
-.fade-in-section.show {
-  opacity: 1;
+.fade-in {
+  animation: fade-in 1.5s ease-in-out forwards;
 }
 
 :root {
@@ -147,6 +143,10 @@
 
 .animation-item, .place_title, .story__title, #place h3, .nomination h3, .site-footer h3 {
   animation: title-slide-up 1.5s ease-in backwards;
+}
+
+.story-text, .studio-text {
+  animation: fade-in 1.5s ease-in-out backwards;
 }
 
 h2, h3 {
@@ -201,14 +201,14 @@ h2 span, h3 span {
   align-items: center;
 }
 .story h2::before {
-  content: url("./assets/images/sunflower_leaves.png");
+  content: url("../assets/images/sunflower_leaves.png");
   position: absolute;
   left: 0;
   top: 1.8em;
   z-index: -1;
 }
 .story h2::after {
-  content: url("./assets/images/Sunflower.png");
+  content: url("../assets/images/Sunflower.png");
   position: absolute;
   left: 0.7em;
   top: 6em;
@@ -224,14 +224,14 @@ h2 span, h3 span {
   background-color: #FFF5E9;
 }
 .story__article::before {
-  content: url("./assets/images/hibiscus_leaves.png");
+  content: url("../assets/images/hibiscus_leaves.png");
   position: absolute;
   left: 50%;
   top: 8em;
   z-index: -1;
 }
 .story__article::after {
-  content: url("./assets/images/Hibiscus.png");
+  content: url("../assets/images/Hibiscus.png");
   position: absolute;
   left: calc(50% + 414px);
   top: 2em;
@@ -270,6 +270,7 @@ h2 span, h3 span {
 }
 
 .swiper {
+  width: 1440px;
   height: 100%;
   display: flex;
   justify-content: center;

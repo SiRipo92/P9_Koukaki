@@ -41,18 +41,20 @@
       var swiperContainer = document.querySelector('.mySwiper');
       if (swiperContainer) {
         swiper = new Swiper('.mySwiper', {
+          direction: "horizontal",
           loop: true,
-          spaceBetween: 100,
-          autoplay: true, 
-          speed: 1000,
+          spaceBetween: 50,
+          autoplay:  {
+            delay: 5000,
+          },
           effect: 'coverflow',
           grabCursor: true,
           centeredSlides: true,
           slidesPerView: 3,
           coverflowEffect: {
-            rotate: 0,
-            stretch: 80,
-            depth: 200,
+            rotate: 30,
+            stretch: 0,
+            depth: 100,
             modifier: 1,
             slideShadows: false,
           },

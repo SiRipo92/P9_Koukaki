@@ -123,17 +123,10 @@
 .title-anim {
   animation: title-slide-up 1.5s ease-in forwards;
 }
+.fade-in {
+  animation: fade-in 1.5s ease-in-out forwards;
 
-.fade-in-section {
-  opacity: 0;
-  transition: opacity 2s ease-in-out;
-  
-  &.show {
-    opacity: 1;
-  }
 }
-
-
 
 
 ////// Rotating flowers
@@ -159,4 +152,8 @@
 
 .animation-item, .place_title, .story__title, #place h3, .nomination h3, .site-footer h3 {
   animation: title-slide-up 1.5s ease-in backwards;
+}
+
+.story-text, .studio-text {
+  animation: fade-in 1.5s ease-in-out backwards;
 }

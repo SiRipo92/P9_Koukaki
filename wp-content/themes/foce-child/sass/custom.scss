@@ -76,14 +76,14 @@ h2, h3 {
     align-items: center;
     h2{
       &::before {
-        content: url('./assets/images/sunflower_leaves.png');
+        content: url('../assets/images/sunflower_leaves.png');
         position: absolute;
         left: 0;
         top: 1.8em;
         z-index: -1;
       }
       &::after {
-        content: url('./assets/images/Sunflower.png');
+        content: url('../assets/images/Sunflower.png');
         position: absolute;
         left: 0.7em;
         top: 6em;
@@ -100,14 +100,14 @@ h2, h3 {
       padding-bottom: 2em;
       background-color: $color__background-body;
       &::before {
-        content: url('./assets/images/hibiscus_leaves.png');
+        content: url('../assets/images/hibiscus_leaves.png');
         position: absolute;
         left: 50%;
         top: 8em;
         z-index: -1;
       }
       &::after {
-        content: url('./assets/images/Hibiscus.png');
+        content: url('../assets/images/Hibiscus.png');
         position: absolute;
         left: calc(50% + 414px);
         top: 2em;
@@ -145,12 +145,14 @@ h2, h3 {
     padding-top: 20px;
 }
 
+
 .swiper-container {
     width: 100%;
     height: 100%;
 }
 
 .swiper {
+    width: 1440px;
     height: 100%;
     display: flex;
     justify-content: center;
