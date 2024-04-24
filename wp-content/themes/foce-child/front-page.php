@@ -27,7 +27,7 @@ get_header();
         </article>
         
 <!--  STORY_CHARACTERS / SWIPER SLIDER TEMPLATE  -->  
-        <article id="swiper" class="animation-item">
+        <article id="characters-swiper" class="animation-item">
             <h3 class="observed-item"><span class ="characters__title">Les personnages</span></h3>  
             <?php get_template_part ('template-partials/page-characters');?>
 <!--  STORY__PLACE -->
