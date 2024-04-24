@@ -8,6 +8,7 @@
  Version: 0.1
  */
 
+
  @mixin keyframes($animation-name) {
     @keyframes #{$animation-name} {
       @content;
@@ -69,58 +70,110 @@ h2, h3 {
 /////////////////// START OF STORY SECTION //////////////////////
 
 .story {
-    overflow: hidden;
-    padding: 50px 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2{
+      &::before {
+        content: url('./assets/images/sunflower_leaves.png');
+        position: absolute;
+        left: 0;
+        top: 1.8em;
+        z-index: -1;
+      }
+      &::after {
+        content: url('./assets/images/Sunflower.png');
+        position: absolute;
+        left: 0.7em;
+        top: 6em;
+      }
+    }
+  
+    &__article {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 50%;
+      font-size: 15px;
+      padding-bottom: 2em;
+      background-color: $color__background-body;
+      &::before {
+        content: url('./assets/images/hibiscus_leaves.png');
+        position: absolute;
+        left: 50%;
+        top: 8em;
+        z-index: -1;
+      }
+      &::after {
+        content: url('./assets/images/Hibiscus.png');
+        position: absolute;
+        left: calc(50% + 414px);
+        top: 2em;
+      }
+    }
 }
 
 //// START OF CHARACTER SWIPER ////
 
 
-#characters {
-    display: flex;
+#characters-swiper {
+    box-sizing: initial;
     flex-direction: column;
     align-items: flex-start;
     position: relative;
-    min-height: 400px;
-    h3 {
-        width: 45%;
-        background-size: contain;
-    }
+    height: 650px;
+    width: 100%;
+    margin: 100px 0 50px 0;
+    display: flex;
 }
 
-.swiper-containter {
+#characters-swiper h3 {
+    position: relative;
+    padding: 0;
+    width: 35%;
+    height: 20%;
+    background-image: url('../assets/images/orange_characters_bg.png');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.characters__title {
+    padding-top: 20px;
+}
+
+.swiper-container {
     width: 100%;
     height: 100%;
-    justify-content: center;
-    align-content: center;
-    flex: 1;
-}
-.swiper {
-    height: 100%;
-    width: 1440px;
-    padding-top: 50px;
-    padding-bottom: 50px;
 }
 
+.swiper {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
 .swiper-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1440px;
+    width: 100%;
+    height: 100%;
 }
 
 .swiper-slide {
-    background-position: center;
-    background-size: cover;
-    width: 300px;
-    height: 300px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .swiper-slide img {
     display: block;
-    width: 300px;
-    height: 300px;    
+    width: 80%;
+    height: 80%;  
+    object-fit: cover; 
 }
+
 //// END OF CHARACTER SWIPER ////
 /// START OF PLACE SECTION ///
 .story #place h3 {
@@ -138,6 +191,37 @@ h2, h3 {
 
     h2 {
         padding: 0 5%;
+        overflow: hidden;
+        background-image: url("../assets/images/purple_studio_bg.png");
+        background-size: cover;
+
+        &::before {
+            content: url('../assets/images/random_flower.png');
+            position: absolute;
+            left: -4.5em;
+            top: 0;
+        }
+        &::after {
+            content: url('../assets/images/flower.png');
+            position: absolute;
+            right: 1em;
+            top: 1.2em;
+        }
+    }
+    > div {
+        display: flex;
+        justify-content: space-between;
+        width: 66.66%;
+        margin: auto;
+        &::before {
+            content: url('../assets/images/trple-leaf.png');
+            position: absolute;
+            left: calc(50% - 17.225px);
+            top: 40%;
+        }
+        p {
+            width: 44.5%;
+        }
     }
 }
 .nomination {
@@ -156,13 +240,13 @@ h2, h3 {
         content: url('../assets/images/Sunflower.png');
         position: absolute;
         left: 4em;
-        top:-100px;
+        top:0;
     }
     &::after {
         content: url('../assets/images/orchid.png');
         position: absolute;
-        right: 4em;
-        top: -100px;
+        right: -20em;
+        top: -10px;
       }
 }
 
@@ -190,6 +274,7 @@ h2, h3 {
         width: 80%;
         margin: 0 auto;
         padding: 10px 0;
+        text-align: left;
     }
 }
 

@@ -160,7 +160,3 @@
 .animation-item, .place_title, .story__title, #place h3, .nomination h3, .site-footer h3 {
   animation: title-slide-up 1.5s ease-in backwards;
 }
-.story__text {
-  transform: opacity 1.5s forwards;
-  animation: fade-in 1.5s both alternate;
-}
