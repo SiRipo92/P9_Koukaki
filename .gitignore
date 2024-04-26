@@ -1,8 +1,4 @@
 wp-content/themes/foce-child/eslint.config.mjs
-wp-content/themes/foce-child/package-lock.json
-wp-content/themes/foce-child/package.json
-wp-content/themes/foce-child/js/custom.js
-wp-content/themes/foce-child/js/swiper-slider.js
 wp-content/themes/foce-child/node_modules/.package-lock.json
 wp-content/themes/foce-child/node_modules/.bin/acorn
 wp-content/themes/foce-child/node_modules/.bin/cssesc
