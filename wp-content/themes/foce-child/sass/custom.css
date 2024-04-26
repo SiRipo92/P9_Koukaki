@@ -361,4 +361,8 @@ h2 span, h3 span {
 .site-main {
   overflow: hidden;
   margin: 0;
+}
+
+.hidden {
+  opacity: 0;
 }/*# sourceMappingURL=custom.css.map */

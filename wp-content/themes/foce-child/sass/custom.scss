@@ -23,7 +23,6 @@
  @import 'studio';
  @import 'oscars';
  @import 'footer';
- @import 'media-queries';
 
 // Global
 h2, h3 {
@@ -41,4 +40,8 @@ h2, h3 {
 .site-main {
     overflow: hidden;
     margin: 0;
+}
+
+.hidden {
+  opacity: 0;
 }

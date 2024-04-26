@@ -5,7 +5,7 @@ get_header();
 
 <main id="primary" class="site-main">
     <!-- ************************************ SECTION HERO BANNER -->
-    <section class="hero-header section-fade-in">
+    <section class="hero-header ">
         <div class="banner-container">
             <div class = "banner">
                 <video id= "bg-video" class="banner__video" poster= "<?php echo get_stylesheet_directory_uri(). '/assets/images/banner.png'; ?>" autoplay muted loop>
@@ -20,19 +20,19 @@ get_header();
 <!-- ************************************ SECTION STORY-->
 
 <!--  STORY__ARTICLE -->
-    <section id="story" class="story section-fade-in">
+    <section id="story" class="story hidden">
         <article id="story__article" class="story__article">
                 <h2><span>L'histoire</span></h2>
                 <p><?php echo get_theme_mod('story'); ?></p>
         </article>
         
 <!--  STORY_CHARACTERS / SWIPER SLIDER TEMPLATE  -->  
-        <article id="characters-swiper" class="story__characters section-fade-in">
+        <article id="characters-swiper" class="story__characters">
             <h3><span>Les personnages</span></h3>  
             <?php get_template_part ('template-partials/page-characters');?>
 <!--  STORY__PLACE -->
 
-        <article id="place" class="place section-fade-in">
+        <article id="place" class="place">
             <div>
                 <h3><span>Le Lieu</span></h3>
                 <p><?php echo get_theme_mod('place'); ?></p>
@@ -44,7 +44,7 @@ get_header();
 
 <!-- ************************************ SECTION STUDIO--> 
 
-<section id="studio" class= "studio section-fade-in">
+<section id="studio" class= "studio hidden">
     <h2><span>Studio Koukaki</span></h2>
     <div>
         <p>Acteur majeur de l’animation, Koukaki est un studio intégré fondé en 2012 qui créé, produit et distribue des programmes originaux dans plus de 190 pays pour les enfants et les adultes. Nous avons deux sections en activité : le long métrage et le court métrage. Nous développons des films fantastiques, principalement autour de la culture de notre pays natal, le Japon.</p>
