@@ -1,0 +1,51 @@
+#characters-swiper {
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    height: 650px;
+    width: 100%;
+    margin: 100px 0 50px 0;
+    display: flex;
+    
+    
+    h3 {
+    background-image: url('../assets/images/orange_characters_bg.png');
+    background-size: contain;
+    
+        span {
+            display: inline-block;  
+            text-align: center;
+            padding: 5px;
+        }
+    }
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.mySwiper {
+    width: 1440px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.swiper-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 80%;
+    height: 80%;  
+    object-fit: cover; 
+}

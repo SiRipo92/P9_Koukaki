@@ -1,6 +1,6 @@
 /////////////////// KEYFRAMES
 
-@include keyframes (spin-flowers) {
+@keyframes spin-flowers {
   from {
     transform: rotate(0deg);
   }
@@ -9,7 +9,7 @@
   }
 }
 
-@include keyframes(fade-in) {
+@keyframes fade-in {
   from {
     opacity: 0;
   }
@@ -18,31 +18,18 @@
   }
 }
 
-@include keyframes(fade-out) {
-  0%{
-    opacity: 1;
-  }
-  60% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@include keyframes(fade-in-slide-up) {
+@keyframes fade-in-slide-up {
   from {
     opacity: 0;
-    transform: translateY(80px);
+    transform: translateY(300px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-    visibility: visible;
   }
 }
 
-@include keyframes (fade-in-slide-down) {
+@keyframes fade-in-slide-down {
   from {
     opacity: 0;
     transform: translateY(-300px);
@@ -50,11 +37,10 @@
   to {
     opacity: 1;
     transform: translateY(0);
-    visibility: visible;
   }
 }
 
-@include keyframes (slide-up) {
+@keyframes small-slide-up {
   from {
     transform: translateY(50px);
   }
@@ -65,19 +51,7 @@
 
 ////////////////  Slowdown the animation for the titles
 
-@include keyframes(title-fade-in) {
-  0% {
-    opacity: 0;
-  }
-  70% {
-    opacity: .2;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@include keyframes(title-slide-up) {
+@keyframes title-slide-up {
   0% {
     transform: translateY(50px);
     opacity: 0;
@@ -96,9 +70,8 @@
   }
 }
 
-
 // Floating Logo 
-@include keyframes(floating) {
+@keyframes floating {
   0%, 100% {
     transform: translate3d(0, 0, 0);
   }
@@ -120,17 +93,9 @@
   }
 }
 
-.title-anim {
-  animation: title-slide-up 1.5s ease-in forwards;
-}
-.fade-in {
-  animation: fade-in 1.5s ease-in-out forwards;
-
-}
-
 
 ////// Rotating flowers
-
+/// 
 :root {
   --flowers-rotation-speed: 10s;
 }
@@ -148,12 +113,4 @@
 
 .hero-header__logo img {
   animation: fade-in-slide-up 1.5s 1 ease-in backwards, floating 17s 2s ease-in infinite alternate;
-}
-
-.animation-item, .place_title, .story__title, #place h3, .nomination h3, .site-footer h3 {
-  animation: title-slide-up 1.5s ease-in backwards;
-}
-
-.story-text, .studio-text {
-  animation: fade-in 1.5s ease-in-out backwards;
 }

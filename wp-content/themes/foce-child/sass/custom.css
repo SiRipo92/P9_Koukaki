@@ -24,26 +24,14 @@
     opacity: 1;
   }
 }
-@keyframes fade-out {
-  0% {
-    opacity: 1;
-  }
-  60% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
 @keyframes fade-in-slide-up {
   from {
     opacity: 0;
-    transform: translateY(80px);
+    transform: translateY(300px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-    visibility: visible;
   }
 }
 @keyframes fade-in-slide-down {
@@ -54,26 +42,14 @@
   to {
     opacity: 1;
     transform: translateY(0);
-    visibility: visible;
   }
 }
-@keyframes slide-up {
+@keyframes small-slide-up {
   from {
     transform: translateY(50px);
   }
   to {
     transform: translateY(0);
-  }
-}
-@keyframes title-fade-in {
-  0% {
-    opacity: 0;
-  }
-  70% {
-    opacity: 0.2;
-  }
-  100% {
-    opacity: 1;
   }
 }
 @keyframes title-slide-up {
@@ -114,14 +90,6 @@
     transform: translate3d(0, 0, 0);
   }
 }
-.title-anim {
-  animation: title-slide-up 1.5s ease-in forwards;
-}
-
-.fade-in {
-  animation: fade-in 1.5s ease-in-out forwards;
-}
-
 :root {
   --flowers-rotation-speed: 10s;
 }
@@ -139,25 +107,6 @@
 
 .hero-header__logo img {
   animation: fade-in-slide-up 1.5s 1 ease-in backwards, floating 17s 2s ease-in infinite alternate;
-}
-
-.animation-item, .place_title, .story__title, #place h3, .nomination h3, .site-footer h3 {
-  animation: title-slide-up 1.5s ease-in backwards;
-}
-
-.story-text, .studio-text {
-  animation: fade-in 1.5s ease-in-out backwards;
-}
-
-h2, h3 {
-  box-sizing: border-box;
-  background-size: 100%;
-  text-align: center;
-  overflow: hidden;
-  transition-duration: 0.6s;
-}
-h2 span, h3 span {
-  display: block;
 }
 
 .hero-header {
@@ -238,7 +187,6 @@ h2 span, h3 span {
 }
 
 #characters-swiper {
-  box-sizing: initial;
   flex-direction: column;
   align-items: flex-start;
   position: relative;
@@ -247,21 +195,14 @@ h2 span, h3 span {
   margin: 100px 0 50px 0;
   display: flex;
 }
-
 #characters-swiper h3 {
-  position: relative;
-  padding: 0;
-  width: 35%;
-  height: 20%;
   background-image: url("../assets/images/orange_characters_bg.png");
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  text-align: center;
+  background-size: contain;
 }
-
-.characters__title {
-  padding-top: 20px;
+#characters-swiper h3 span {
+  display: inline-block;
+  text-align: center;
+  padding: 5px;
 }
 
 .swiper-container {
@@ -269,7 +210,7 @@ h2 span, h3 span {
   height: 100%;
 }
 
-.swiper {
+.mySwiper {
   width: 1440px;
   height: 100%;
   display: flex;
@@ -315,7 +256,7 @@ h2 span, h3 span {
 #studio h2::before {
   content: url("../assets/images/random_flower.png");
   position: absolute;
-  left: -4.5em;
+  left: -2.25em;
   top: 0;
 }
 #studio h2::after {
@@ -323,6 +264,9 @@ h2 span, h3 span {
   position: absolute;
   right: 1em;
   top: 1.2em;
+}
+#studio h2 span {
+  display: inline;
 }
 #studio > div {
   display: flex;
@@ -340,82 +284,47 @@ h2 span, h3 span {
   width: 44.5%;
 }
 
-.nomination {
-  position: relative;
+#nomination {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   align-content: center;
-  margin-top: 100px;
   height: 450px;
-  width: 1440px;
-  padding: 100px 0 50px 0;
+  width: 100%;
+  margin: 3em 0;
+  position: relative;
 }
-.nomination::before {
+#nomination::before {
   content: url("../assets/images/Sunflower.png");
   position: absolute;
   left: 4em;
   top: 0;
 }
-.nomination::after {
+#nomination::after {
   content: url("../assets/images/orchid.png");
   position: absolute;
-  right: -20em;
+  right: -8em;
   top: -10px;
 }
-
-.nomination__title {
-  flex: 3;
-  display: flex;
-  background-image: url("../assets/images/orange_nomination_bg.png");
+#nomination h3 {
+  background-image: url("../assets/images/orange_characters_bg.png");
   background-repeat: no-repeat;
-  background-size: contain;
   background-position: center;
-  height: 100%;
-  width: 100%;
-  align-self: center;
-  justify-content: center;
-  flex-basis: 1;
-  overflow: hidden;
-}
-
-.oscars-content {
-  flex: 1;
-  max-height: 150vh;
-  overflow: hidden;
-}
-.oscars-content .oscars__title {
-  width: 80%;
-  margin: 0 auto;
-  padding: 10px 0;
-  text-align: left;
-}
-
-.nomination__image {
-  flex: 1;
-  height: 100%;
-  min-width: 30%;
-  align-items: center;
-  display: flex;
-  overflow: auto;
-}
-.nomination__image img {
-  width: auto;
-  -o-object-fit: fill;
-     object-fit: fill;
-}
-
-h2, h3 {
-  box-sizing: border-box;
   background-size: 100%;
-  text-align: center;
-  overflow: hidden;
-  transition-duration: 0.6s;
+  height: 100%;
+  width: 80%;
 }
-h2 span, h3 span {
+#nomination h3 span {
   display: block;
+  margin: 25px;
+  padding: 70px;
+  text-align: left;
+  overflow: hidden;
+}
+#nomination .oscars_img {
+  min-width: 20%;
 }
 
 .site-footer {
@@ -436,4 +345,20 @@ h2 span, h3 span {
   position: absolute;
   right: -4em;
   bottom: 7.8em;
+}
+
+h2, h3 {
+  box-sizing: border-box;
+  background-size: 100%;
+  text-align: center;
+  overflow: hidden;
+  transition-duration: 0.6s;
+}
+h2 span, h3 span {
+  display: block;
+}
+
+.site-main {
+  overflow: hidden;
+  margin: 0;
 }/*# sourceMappingURL=custom.css.map */

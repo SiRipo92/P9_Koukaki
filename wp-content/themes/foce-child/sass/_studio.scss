@@ -1,0 +1,44 @@
+#studio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+        padding: 0 5%;
+        overflow: hidden;
+        background-image: url("../assets/images/purple_studio_bg.png");
+        background-size: cover;
+
+        &::before {
+            content: url('../assets/images/random_flower.png');
+            position: absolute;
+            left: -2.25em;
+            top: 0;
+        }
+        &::after {
+            content: url('../assets/images/flower.png');
+            position: absolute;
+            right: 1em;
+            top: 1.2em;
+        }
+
+        span {
+            display: inline;
+        }
+    }
+    > div {
+        display: flex;
+        justify-content: space-between;
+        width: 66.66%;
+        margin: auto;
+        &::before {
+            content: url('../assets/images/trple-leaf.png');
+            position: absolute;
+            left: calc(50% - 17.225px);
+            top: 40%;
+        }
+        p {
+            width: 44.5%;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+// Section: Banner
+.hero-header {
+    position: relative;
+    overflow: hidden;
+    height: 807px;
+    margin: 0;
+    padding: 0;
+}
+.banner-container {
+    width: 100%;
+    height: 807px;
+    position: absolute;
+    perspective: 1000px;
+        .banner {
+        overflow: hidden;
+        height: 100%;
+        z-index: 0;
+        }
+}
+.banner__video {
+    max-width: 1440px;
+}
+
+.hero-header__logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); // Center the logo
+        img {
+        z-index: 1000;
+        }
+}

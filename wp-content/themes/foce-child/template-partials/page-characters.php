@@ -1,6 +1,6 @@
 <!-- ************************************ SECTION STORY SWIPER SLIDER -->
-    <div class="animation-item swiper-container">
-        <div class ="swiper mySwiper"> 
+    <div class="swiper-container">
+        <div class ="mySwiper"> 
             <div class="swiper-wrapper">
                 <!-- CHARACTER 1 -->
                 <div class="swiper-slide">
