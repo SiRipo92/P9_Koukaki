@@ -1,5 +1,24 @@
 (function($) {
 
+  const bannerVideo = document.querySelector('#bg-video');
+  const fallbackImage = document.querySelector('#fallback-image');
+
+  function updateBanner() {
+    if (window.matchMedia('(max-width: 700px)').matches || bannerVideo.error) {
+      bannerVideo.style.display = 'none';
+      fallbackImage.style.display = 'block';
+    } else {
+      bannerVideo.style.display = 'block';
+      fallbackImage.style.display = 'none';
+    }
+  }
+
+  window.addEventListener('resize', updateBanner);
+  bannerVideo.addEventListener('error', updateBanner);
+  bannerVideo.addEventListener('canplay', updateBanner);
+
+  updateBanner();
+
   // API INTERSECTION OBSERVER FOR SECTION FADE-IN
   
   const sectionObserver = new IntersectionObserver((entries) => {
@@ -67,8 +86,6 @@ document.querySelectorAll("section, article").forEach(section => { sectionObserv
       }
     
       // Initiates the swiper slider
-      // We wrap the initSwiper function call inside a window load event listener
-      // This ensures that the Swiper library is fully loaded before we try to use it
       window.addEventListener('load', function() {
         initSwiper();
       });
