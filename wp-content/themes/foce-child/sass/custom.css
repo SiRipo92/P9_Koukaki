@@ -101,7 +101,7 @@
   animation: spin-flowers var(--flowers-rotation-speed) linear infinite;
 }
 
-.banner {
+.banner-container {
   animation: fade-in-slide-down 1.5s 1 ease-in-out backwards;
 }
 
@@ -121,12 +121,25 @@
   width: 100%;
   height: 807px;
   position: absolute;
-  perspective: 1000px;
+  background-size: cover;
+  background-position: center;
 }
 .banner-container .banner {
   overflow: hidden;
   height: 100%;
   z-index: 0;
+  background-image: url("");
+}
+
+#fallback-image {
+  display: none;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .banner__video {
@@ -143,6 +156,19 @@
   z-index: 1000;
 }
 
+@media screen and (max-width: 699px) {
+  .hero-header {
+    height: 80vh;
+  }
+  .banner-container {
+    height: 80vh;
+  }
+  .hero-header__logo {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
 .story {
   position: relative;
   display: flex;

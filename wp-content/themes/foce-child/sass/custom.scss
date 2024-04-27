@@ -9,11 +9,6 @@
  */
 
 
- @mixin keyframes($animation-name) {
-    @keyframes #{$animation-name} {
-      @content;
-    }
-  }
   
  @import 'animations';
  @import 'banner';
