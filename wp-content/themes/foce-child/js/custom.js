@@ -1,26 +1,35 @@
 (function($) {
 
-  // Elements to recover
-  //$('.hero-header').fadeOut(2000)
-
-  // API INTERSECTION OBSERVER
+  // API INTERSECTION OBSERVER FOR SECTION FADE-IN
   
   const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      console.log("entry : ", entry)
       if (entry.isIntersecting ) {
-        //$(entry.target).css('background-color', 'red')
-        $(entry.target).animate({opacity: 1}, 2000);
+        $(entry.target).animate({opacity: 1}, 1000);
       }
       else {
-        //$(entry.target).css('background-color', 'blue')
-        $(entry.target).animate({opacity: 0}, 2000);
+        $(entry.target).animate({opacity: 0}, 1000);
     }
     });
   }, { threshold: 0.3});
-
-  console.log("document.getElementsByTagName('section') : ", document.querySelector("section"))
+  
 document.querySelectorAll("section, article").forEach(section => { sectionObserver.observe(section) });
+
+  // API INTERSECTION OBSERVER FOR TITLES SLIDE-UP
+  const titleObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        $(entry.target).css('animation', 'title-slide-up 1500ms ease-in backwards');
+      } else {
+        $(entry.target).css('animation', '');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  console.log("document.querySelectorAll('h2 > span, h3 > span') : ", document.querySelectorAll('h2 > span, h3 > span'))
+  document.querySelectorAll("h2 > span, h3 > span").forEach(title => { titleObserver.observe(title) });
+
+
   
     // Parallax effect
     $(window).scroll(function () {
