@@ -237,9 +237,27 @@
      object-fit: cover;
 }
 
+.story #place {
+  display: flex;
+  background-image: url("../assets/images/Studio_Koukaki-image_place.png");
+  width: 100%;
+  min-height: 699px;
+  background-size: cover;
+}
 .story #place h3 {
-  margin-bottom: 0;
-  padding-left: 70px;
+  background-image: url("../assets/images/orange_place_bg.png");
+  margin-bottom: -1em;
+}
+.story #place > div {
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 6em;
+}
+.story #place > div p {
+  padding-left: 5em;
 }
 
 #studio {
