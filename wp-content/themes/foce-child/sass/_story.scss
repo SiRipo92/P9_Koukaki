@@ -45,3 +45,20 @@ $color__background-body: #FFF5E9;
       }
     }
 }
+
+@media screen and (max-width: 699px) {
+  .story {
+    padding: 10% 0;
+    h2 {
+      &::before, &::after {
+        content: none;
+      }
+    }
+
+    &__article {
+      &::before, &::after {
+        content: none;
+      }
+    }
+  }
+}

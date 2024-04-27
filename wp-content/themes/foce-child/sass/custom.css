@@ -212,6 +212,17 @@
   top: 2em;
 }
 
+@media screen and (max-width: 699px) {
+  .story {
+    padding: 10% 0;
+  }
+  .story h2::before, .story h2::after {
+    content: none;
+  }
+  .story__article::before, .story__article::after {
+    content: none;
+  }
+}
 #characters-swiper {
   flex-direction: column;
   align-items: flex-start;
