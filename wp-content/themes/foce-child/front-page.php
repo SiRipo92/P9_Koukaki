@@ -8,9 +8,10 @@ get_header();
     <section class="hero-header ">
         <div class="banner-container">
             <div class = "banner">
-                <video id= "bg-video" class="banner__video" poster= "<?php echo get_stylesheet_directory_uri(). '/assets/images/banner.png'; ?>" autoplay muted loop>
+                <video id= "bg-video" class="banner__video" autoplay muted loop>
                     <source src="<?php echo get_stylesheet_directory_uri() . '/assets/videos/Studio+Koukaki-video.mp4'; ?>" type="video/mp4">
                 </video>
+                <img id="fallback-image" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/banner.png'; ?>" alt="fallback image">
             </div>
             <div class= "hero-header__logo">
                 <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">
