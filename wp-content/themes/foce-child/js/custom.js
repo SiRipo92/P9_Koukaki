@@ -5,14 +5,14 @@
   const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting ) {
-        $(entry.target).animate({opacity: 1}, 1000);
+        $(entry.target).animate({opacity: 1},800);
       }
       else {
-        $(entry.target).animate({opacity: 0}, 1000);
+        $(entry.target).animate({opacity: 0}, 800);
     }
     });
   }, { threshold: 0.3});
-  
+
 document.querySelectorAll("section, article").forEach(section => { sectionObserver.observe(section) });
 
   // API INTERSECTION OBSERVER FOR TITLES SLIDE-UP
@@ -80,5 +80,34 @@ document.querySelectorAll("section, article").forEach(section => { sectionObserv
         }
       });
     });
+
+// Speed up flower rotation with scroll
+
+window.addEventListener('scroll', () => {
+  const scrollPos = window.scrollY || document.documentElement.scrollTop;
+  const rotationSpeed = 1 + scrollPos / 800; // Adjust the divisor to control the speed
+  document.documentElement.style.setProperty('--flowers-rotation-speed', `${rotationSpeed}s`);
+});
+
+// Clouds animation that move with scroll
+
+// Still needs tweaking to start the movement when the section is higher up on the screen
+const clouds = document.querySelectorAll('.clouds');
+const placeSection = document.querySelector('#place');
+window.addEventListener('scroll', () => {
+  const placeSectionRect = placeSection.getBoundingClientRect();
+  if (placeSectionRect.top <= window.innerHeight && placeSectionRect.bottom >= 0) {
+    clouds.forEach(cloud => {
+      const cloudRect = cloud.getBoundingClientRect();
+      const ratio = Math.max(0, (window.innerHeight - cloudRect.top) / cloudRect.height);
+      const translate = -20.83 * ratio;
+      if (ratio > 0 && ratio < 1) {
+        cloud.style.setProperty('transform', 'translateX(' + translate + 'vw)');
+      } else {
+        cloud.style.setProperty('transform', 'translateX(0vw)');
+      }
+    });
+  }
+});
   
   })(jQuery);
