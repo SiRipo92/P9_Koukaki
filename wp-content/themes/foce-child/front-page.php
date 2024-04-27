@@ -33,12 +33,15 @@ get_header();
 <!--  STORY__PLACE -->
 
         <article id="place" class="place">
-    <!----- Insert cloud images here -------->
-            <img class="place__big-cloud" src="<?php echo get_stylesheet_directory_uri(). '/assets/images/big_cloud.png'; ?>" alt="Big rolling cloud">
-            <img class="place__small-cloud" src="<?php echo get_stylesheet_directory_uri(). '/assets/images/little_cloud.png'; ?>" alt="Small rolling cloud">
+
             <div>
                 <h3><span>Le Lieu</span></h3>
                 <p><?php echo get_theme_mod('place'); ?></p>
+            </div>
+            <!----- Insert cloud images here -------->
+            <div class="clouds">
+                <img class="place__big-cloud" src="<?php echo get_stylesheet_directory_uri(). '/assets/images/big_cloud.png'; ?>" alt="Big rolling cloud">
+                <img class="place__small-cloud" src="<?php echo get_stylesheet_directory_uri(). '/assets/images/little_cloud.png'; ?>" alt="Small rolling cloud">
             </div>
         </article>
     </section>
