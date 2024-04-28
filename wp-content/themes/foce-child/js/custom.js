@@ -102,7 +102,7 @@ document.querySelectorAll("section, article").forEach(section => { sectionObserv
 
 window.addEventListener('scroll', () => {
   const scrollPos = window.scrollY || document.documentElement.scrollTop;
-  const rotationSpeed = 1 + scrollPos / 800; // Adjust the divisor to control the speed
+  const rotationSpeed = 1 + scrollPos / 1500; // Adjust the divisor to control the speed
   document.documentElement.style.setProperty('--flowers-rotation-speed', `${rotationSpeed}s`);
 });
 
