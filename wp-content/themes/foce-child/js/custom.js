@@ -107,23 +107,15 @@ window.addEventListener('scroll', () => {
 });
 
 // Clouds animation that move with scroll
+const windowHeight = window.innerHeight;
+const clouds = document.querySelector('.clouds');
 
-// Still needs tweaking to start the movement when the section is higher up on the screen
-const clouds = document.querySelectorAll('.clouds');
-const placeSection = document.querySelector('#place');
 window.addEventListener('scroll', () => {
-  const placeSectionRect = placeSection.getBoundingClientRect();
-  if (placeSectionRect.top <= window.innerHeight && placeSectionRect.bottom >= 0) {
-    clouds.forEach(cloud => {
-      const cloudRect = cloud.getBoundingClientRect();
-      const ratio = Math.max(0, (window.innerHeight - cloudRect.top) / cloudRect.height);
-      const translate = -20.83 * ratio;
-      if (ratio > 0 && ratio < 1) {
-        cloud.style.setProperty('transform', 'translateX(' + translate + 'vw)');
-      } else {
-        cloud.style.setProperty('transform', 'translateX(0vw)');
-      }
-    });
+  const cloudsRect = clouds.getBoundingClientRect();
+  const ratio = (windowHeight - cloudsRect.y) / windowHeight;
+  const translate = -20.83 * ratio;
+  if (ratio > 0 && ratio < 1) {
+    clouds.style.setProperty('transform','translateX(' + translate + 'vw)');
   }
 });
   
