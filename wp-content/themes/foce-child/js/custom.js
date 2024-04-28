@@ -106,14 +106,22 @@ window.addEventListener('scroll', () => {
   document.documentElement.style.setProperty('--flowers-rotation-speed', `${rotationSpeed}s`);
 });
 
-// Clouds animation that move with scroll
+// Clouds animation that move with scroll (recover window height and clouds element)
 const windowHeight = window.innerHeight;
 const clouds = document.querySelector('.clouds');
 
 window.addEventListener('scroll', () => {
+
+  // Recover the dimensions & position of the element "clouds"
   const cloudsRect = clouds.getBoundingClientRect();
+
+  // We calculate the ratio of distance between the top of the window and the top of the clouds
   const ratio = (windowHeight - cloudsRect.y) / windowHeight;
+
+  // Multiply this ratio by -20.83 to get the value of the translation
   const translate = -20.83 * ratio;
+
+  // If the ratio is between 0 and 1, this means the clouds are visible, so we apply the movement to the clouds
   if (ratio > 0 && ratio < 1) {
     clouds.style.setProperty('transform','translateX(' + translate + 'vw)');
   }
