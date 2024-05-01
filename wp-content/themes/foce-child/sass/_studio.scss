@@ -42,3 +42,33 @@
         }
     }
 }
+
+@media screen and (max-width: $breakpoint__large_phone) { 
+    #studio {
+        margin: 0;
+
+        h2 {
+            &::before, &::after {
+                content: none;
+            }
+        }
+
+        > div {
+            margin: 0;
+            width: 100%;
+            justify-content: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: no-wrap;
+            &::before {
+                content: none;
+            }
+            p {
+                font-size: 16px;
+                flex-basis: 1;
+                width: 35%;
+            }
+        }
+    }
+    
+}

@@ -44,7 +44,7 @@
         }
 }
 
-@media screen and (max-width: 699px) {
+@media screen and (max-width: $breakpoint__large_phone) {
     .hero-header {
         height: 80vh;
     }

@@ -49,3 +49,22 @@
     height: 80%;  
     object-fit: cover; 
 }
+
+@media screen and (max-width: $breakpoint__large_phone)  {
+    #characters-swiper {
+        height: 500px;
+        margin-top: 50px;
+    }
+    .mySwiper {
+        width: 100%;
+    }
+
+    .swiper-slide {
+        width: 90%;
+    }
+
+    .swiper-slide img {
+        width: 100%;
+        height: 100%;
+    }
+}

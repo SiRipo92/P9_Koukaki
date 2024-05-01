@@ -46,7 +46,7 @@ $color__background-body: #FFF5E9;
     }
 }
 
-@media screen and (max-width: 699px) {
+@media screen and (max-width: $breakpoint__large_phone)  {
   .story {
     padding: 10% 0;
     h2 {
@@ -58,6 +58,10 @@ $color__background-body: #FFF5E9;
     &__article {
       &::before, &::after {
         content: none;
+      }
+
+      & p {
+        font-size: 16px;
       }
     }
   }

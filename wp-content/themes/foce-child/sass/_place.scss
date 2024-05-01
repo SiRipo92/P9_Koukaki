@@ -29,3 +29,32 @@
         }
     }
 }
+
+@media screen and (max-width: $breakpoint__large_phone)  {
+    #place {
+        & > div {
+            width: 75%;
+            margin: auto;
+            
+            & p {
+            font-size: 16px;
+            }
+        }
+        
+        .clouds {
+            width: 25%;
+            gap: 45px;
+
+            .place__big-cloud {
+                width: 200px;
+                height: 77px;
+            }
+
+            .place__small-cloud {
+                width: 90px;
+                height: 35px;
+            }
+        }
+        
+    }
+}

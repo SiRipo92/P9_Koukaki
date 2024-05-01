@@ -222,6 +222,9 @@
   .story__article::before, .story__article::after {
     content: none;
   }
+  .story__article p {
+    font-size: 16px;
+  }
 }
 #characters-swiper {
   flex-direction: column;
@@ -274,6 +277,22 @@
      object-fit: cover;
 }
 
+@media screen and (max-width: 700px) {
+  #characters-swiper {
+    height: 500px;
+    margin-top: 50px;
+  }
+  .mySwiper {
+    width: 100%;
+  }
+  .swiper-slide {
+    width: 90%;
+  }
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+  }
+}
 .story #place {
   background-image: url("../assets/images/Studio_Koukaki-image_place.png");
   background-attachment: fixed;
@@ -302,6 +321,27 @@
   height: 55px;
 }
 
+@media screen and (max-width: 700px) {
+  #place > div {
+    width: 75%;
+    margin: auto;
+  }
+  #place > div p {
+    font-size: 16px;
+  }
+  #place .clouds {
+    width: 25%;
+    gap: 45px;
+  }
+  #place .clouds .place__big-cloud {
+    width: 200px;
+    height: 77px;
+  }
+  #place .clouds .place__small-cloud {
+    width: 90px;
+    height: 35px;
+  }
+}
 #studio {
   display: flex;
   flex-direction: column;
@@ -344,6 +384,30 @@
   width: 44.5%;
 }
 
+@media screen and (max-width: 700px) {
+  #studio {
+    margin: 0;
+  }
+  #studio h2::before, #studio h2::after {
+    content: none;
+  }
+  #studio > div {
+    margin: 0;
+    width: 100%;
+    justify-content: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: no-wrap;
+  }
+  #studio > div::before {
+    content: none;
+  }
+  #studio > div p {
+    font-size: 16px;
+    flex-basis: 1;
+    width: 35%;
+  }
+}
 #nomination {
   display: flex;
   flex-wrap: wrap;
@@ -387,6 +451,28 @@
   min-width: 20%;
 }
 
+@media screen and (max-width: 700px) {
+  #nomation {
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+  }
+  #nomation h3 {
+    width: 100%;
+    height: 400px;
+    padding: 0;
+    margin: 0;
+  }
+  #nomation h3 span {
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    font-size: 18px;
+  }
+  #nomation .oscars_img {
+    min-width: 100%;
+  }
+}
 .site-footer {
   position: relative;
   display: flex;
