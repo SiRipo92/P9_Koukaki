@@ -1,5 +1,6 @@
 (function($) {
 
+  // FUNCTION TO UPDATE THE BANNER IMAGE/VIDEO BASED ON THE SCREEN SIZE/VIDEO ERROR
   const bannerVideo = document.querySelector('#bg-video');
   const fallbackImage = document.querySelector('#fallback-image');
 
@@ -19,6 +20,12 @@
 
   updateBanner();
 
+    // Parallax effect on the banner
+    $(window).scroll(function () {
+      $('.banner-container').css({'transform': 'translateY(' + ($(this).scrollTop() * 0.7) + 'px)'});
+      $('.hero-header__logo').css({'transform': 'translate(-50%, -50%) translateY(' + ($(this).scrollTop() * 0.7) + 'px)'});
+    });
+
   // API INTERSECTION OBSERVER FOR SECTION FADE-IN
   
   const sectionObserver = new IntersectionObserver((entries) => {
@@ -26,35 +33,23 @@
       if (entry.isIntersecting ) {
         $(entry.target).animate({opacity: 1},800);
       }
-      else {
-        $(entry.target).animate({opacity: 0}, 800);
-    }
     });
   }, { threshold: 0.3});
 
-document.querySelectorAll("section, article").forEach(section => { sectionObserver.observe(section) });
+document.querySelectorAll(".hero-header, #story, #characters-swiper, #place, #studio, #nomination, .site-footer").forEach(section => { sectionObserver.observe(section) });
 
   // API INTERSECTION OBSERVER FOR TITLES SLIDE-UP
   const titleObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         $(entry.target).css('animation', 'title-slide-up 1500ms ease-in backwards');
-      } else {
-        $(entry.target).css('animation', '');
-      }
+      } 
     });
   }, { threshold: 0.3 });
 
   console.log("document.querySelectorAll('h2 > span, h3 > span') : ", document.querySelectorAll('h2 > span, h3 > span'))
   document.querySelectorAll("h2 > span, h3 > span").forEach(title => { titleObserver.observe(title) });
 
-
-  
-    // Parallax effect
-    $(window).scroll(function () {
-      $('.banner-container').css({'transform': 'translateY(' + ($(this).scrollTop() * 0.7) + 'px)'});
-      $('.hero-header__logo').css({'transform': 'translate(-50%, -50%) translateY(' + ($(this).scrollTop() * 0.7) + 'px)'});
-    });
   
   // Swiper slider
     $(document).ready(function() {
@@ -93,7 +88,15 @@ document.querySelectorAll("section, article").forEach(section => { sectionObserv
       $(window).resize(function() {
         if (swiper) {
           swiper.destroy(); // Destroy the swiper instance
-          initSwiper(); // Re-initiate the swiper according to the width of the screen
+
+          // If the screen width is less than 700px, set the slidesPerView to 1
+          initSwiper({
+            slidesPerView: 1,
+            spaceBetween : 10
+          });
+
+        } else {
+          initSwiper(); // Use the default swiper settings for larger screens
         }
       });
     });
