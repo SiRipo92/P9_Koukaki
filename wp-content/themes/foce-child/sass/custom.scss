@@ -8,16 +8,23 @@
  Version: 0.1
  */
 
+// Import variables
+ @import 'variables/breakpoints'; 
+ @import 'variables/colors';
 
- @import 'breakpoints'; 
+ // Import animation keyframes & classes
  @import 'animations';
- @import 'banner';
- @import 'story';
- @import 'swiper';
- @import 'place';
- @import 'studio';
- @import 'oscars';
- @import 'footer';
+
+
+ // Import layout templates
+ @import 'layouts/banner';
+ @import 'layouts/story';
+ @import 'layouts/swiper';
+ @import 'layouts/place';
+ @import 'layouts/studio';
+ @import 'layouts/oscars';
+ @import 'layouts/footer';
+ @import 'layouts/menu-burger';
 
 // Global
 h2, h3 {
@@ -40,3 +47,4 @@ h2, h3 {
 .hidden {
   opacity: 0;
 }
+

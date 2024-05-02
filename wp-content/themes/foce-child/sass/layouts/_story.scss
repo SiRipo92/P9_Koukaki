@@ -46,23 +46,26 @@ $color__background-body: #FFF5E9;
     }
 }
 
-@media screen and (max-width: $breakpoint__large_phone)  {
+@media screen and (min-width: 320px) and (max-width: $breakpoint__large_phone)  {
   .story {
-    padding: 10% 0;
+    padding: 5% 2%;
     h2 {
+      width: 100%;
+      font-size: 1.5em;
+      background-size: contain;
       &::before, &::after {
         content: none;
       }
     }
 
     &__article {
+      width: 100%;
+      font-size: 1em;
+
       &::before, &::after {
         content: none;
       }
 
-      & p {
-        font-size: 16px;
-      }
     }
   }
 }
