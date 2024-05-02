@@ -26,80 +26,92 @@
       $('.hero-header__logo').css({'transform': 'translate(-50%, -50%) translateY(' + ($(this).scrollTop() * 0.7) + 'px)'});
     });
 
-  // API INTERSECTION OBSERVER FOR SECTION FADE-IN
-  
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting ) {
-        $(entry.target).animate({opacity: 1},800);
-      }
-    });
-  }, { threshold: 0.3});
+   // Create an Intersection Observer for the titles
+const titleObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !$(entry.target).hasClass('animated')) {
+      $(entry.target).css('animation', 'title-slide-up 1.5s ease-in backwards');
+      titleObserver.unobserve(entry.target); // Stop observing the title once it has been animated
+    }
+  });
+}, { threshold: 0.3});
+
+// Create an Intersection Observer for the sections
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting ) {
+      $(entry.target).animate({opacity: 1});
+      sectionObserver.unobserve(entry.target);
+
+      $(entry.target).find('.title').each(function() {
+        titleObserver.observe(this);
+      });
+    }
+  });
+}, { threshold: 0.3});
 
 document.querySelectorAll(".hero-header, #story, #characters-swiper, #place, #studio, #nomination, .site-footer").forEach(section => { sectionObserver.observe(section) });
-
-  // API INTERSECTION OBSERVER FOR TITLES SLIDE-UP
-  const titleObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        $(entry.target).css('animation', 'title-slide-up 1500ms ease-in backwards');
-      } 
-    });
-  }, { threshold: 0.3 });
-
-  console.log("document.querySelectorAll('h2 > span, h3 > span') : ", document.querySelectorAll('h2 > span, h3 > span'))
-  document.querySelectorAll("h2 > span, h3 > span").forEach(title => { titleObserver.observe(title) });
-
-  
   // Swiper slider
     $(document).ready(function() {
       var swiper;
     
-      function initSwiper() {
+      function initSwiper(options = {}) {
         var swiperContainer = document.querySelector('.mySwiper');
         if (swiperContainer) {
-          swiper = new Swiper('.mySwiper', {
-            direction: "horizontal",
-            loop: true,
-            spaceBetween: 50,
-            autoplay:  {
-              delay: 5000,
-            },
-            effect: 'coverflow',
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 3,
-            coverflowEffect: {
-              rotate: 30,
-              stretch: 0,
-              depth: 100,
-              modifier: 1,
-              slideShadows: false,
-            },
-          });
+            swiper = new Swiper('.mySwiper', {
+                direction: "horizontal",
+                loop: true,
+                spaceBetween: 50,
+                autoplay:  {
+                    delay: 5000,
+                },
+                effect: 'coverflow',
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: 3,
+                coverflowEffect: {
+                    rotate: 30,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: false,
+                },
+                ...options
+            });
+            console.log('Swiper initialized with options:', options);
+            console.log('Swiper instance:', swiper);
         }
-      }
+    }
     
-      // Initiates the swiper slider
-      window.addEventListener('load', function() {
+    // Initiates the swiper slider
+    window.addEventListener('load', function() {
+      if ($(window).width() < 700) {
+        initSwiper({
+          slidesPerView: 1,
+          spaceBetween: 10
+        });
+      } else {
         initSwiper();
-      });
+      }
+   });
     
-      $(window).resize(function() {
-        if (swiper) {
-          swiper.destroy(); // Destroy the swiper instance
+    $(window).resize(function() {
+      console.log('Window width:' , $(window).width());
+      if (swiper) {
+        swiper.destroy(); 
+        
+      if ($(window).width() < 700) {
+        initSwiper({
+          slidesPerView: 1,
+          spaceBetween : 10
+        });
+      } else {
+        initSwiper(); // Use the default swiper settings for larger screens
+      }
+    }
 
-          // If the screen width is less than 700px, set the slidesPerView to 1
-          initSwiper({
-            slidesPerView: 1,
-            spaceBetween : 10
-          });
-
-        } else {
-          initSwiper(); // Use the default swiper settings for larger screens
-        }
-      });
     });
+  });
 
 // Speed up flower rotation with scroll
 
