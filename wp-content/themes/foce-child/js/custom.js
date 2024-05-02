@@ -78,8 +78,6 @@ document.querySelectorAll(".hero-header, #story, #characters-swiper, #place, #st
                 },
                 ...options
             });
-            console.log('Swiper initialized with options:', options);
-            console.log('Swiper instance:', swiper);
         }
     }
     
@@ -96,10 +94,9 @@ document.querySelectorAll(".hero-header, #story, #characters-swiper, #place, #st
    });
     
     $(window).resize(function() {
-      console.log('Window width:' , $(window).width());
       if (swiper) {
         swiper.destroy(); 
-        
+
       if ($(window).width() < 700) {
         initSwiper({
           slidesPerView: 1,
