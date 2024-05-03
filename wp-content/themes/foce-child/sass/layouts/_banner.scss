@@ -75,3 +75,14 @@
         transform: translate(-50%, -50%);
     }
 }
+
+// Laptop and desktop
+@media screen and (min-width: $breakpoint__laptop) and (max-width: 1440px) {
+    .hero-header {
+        max-height: 700px;
+    }
+
+    .banner-container {
+        max-height: 700px;
+    }
+}

@@ -89,3 +89,22 @@
     }
   }
 }
+
+// Tablet
+@media screen and (min-width: $breakpoint__small_tablet) and (max-width: $breakpoint__tablet) {
+  .story {
+    h2 {
+      font-size: 3em;
+      &::before, &::after {
+        content: none;
+      }
+    }
+    
+    &__article {
+      width: 90%;
+      &::before, &::after {
+        content: none;
+      }
+    }
+  }
+}

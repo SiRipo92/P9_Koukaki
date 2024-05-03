@@ -183,6 +183,14 @@
     transform: translate(-50%, -50%);
   }
 }
+@media screen and (min-width: 1192px) and (max-width: 1440px) {
+  .hero-header {
+    max-height: 700px;
+  }
+  .banner-container {
+    max-height: 700px;
+  }
+}
 .story {
   position: relative;
   display: flex;
@@ -256,6 +264,20 @@
   }
   .story__article {
     width: 80%;
+  }
+  .story__article::before, .story__article::after {
+    content: none;
+  }
+}
+@media screen and (min-width: 920px) and (max-width: 1040px) {
+  .story h2 {
+    font-size: 3em;
+  }
+  .story h2::before, .story h2::after {
+    content: none;
+  }
+  .story__article {
+    width: 90%;
   }
   .story__article::before, .story__article::after {
     content: none;
@@ -369,6 +391,36 @@
        object-fit: cover;
   }
 }
+@media screen and (min-width: 1040px) and (max-width: 1192px) {
+  #characters-swiper {
+    height: 600px;
+    margin: 0;
+    padding: 0 -5em;
+  }
+  #characters-swiper h3 {
+    background-size: contain;
+    font-size: 2em;
+  }
+  #characters-swiper .mySwiper {
+    width: 100%;
+    height: 100%;
+  }
+  #characters-swiper .swiper-slide {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    width: 100%;
+  }
+  #characters-swiper .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
 .story #place {
   background-image: url("../assets/images/Studio_Koukaki-image_place.png");
   background-attachment: fixed;
@@ -418,7 +470,25 @@
 }
 @media screen and (min-width: 700px) and (max-width: 920px) {
   .story #place {
-    height: 500px;
+    height: 300px;
+  }
+  .story #place > div h3 {
+    font-size: 2em;
+    text-align: center;
+  }
+}
+@media screen and (min-width: 700px) and (max-width: 1040px) {
+  .story #place {
+    height: 450px;
+  }
+  .story #place > div h3 {
+    font-size: 2em;
+    text-align: center;
+  }
+}
+@media screen and (min-width: 1040px) and (max-width: 1192px) {
+  .story #place {
+    height: 600px;
   }
   .story #place > div h3 {
     font-size: 2em;
@@ -500,6 +570,26 @@
     width: 100%;
   }
 }
+@media screen and (min-width: 920px) and (max-width: 1040px) {
+  #studio h2::before {
+    position: absolute;
+    left: -2em;
+    top: 0;
+  }
+  #studio h2::after {
+    position: absolute;
+    right: -1em;
+    top: 1em;
+  }
+  #studio > div::before {
+    position: absolute;
+    left: calc(50% - 17.225px);
+    top: 40%;
+  }
+  #studio > div p {
+    width: 42.5%;
+  }
+}
 #nomination {
   display: flex;
   flex-wrap: wrap;
@@ -562,7 +652,7 @@
     text-align: left;
     padding-top: 85px;
   }
-  #nomination span.title {
+  #nomination .title {
     padding: 0;
     margin: 0;
   }
@@ -584,10 +674,42 @@
     font-size: 2em;
     padding-top: 85px;
   }
-  #nomination span.title {
+  #nomination .title {
     padding: 0;
     margin: 0;
     text-align: center;
+  }
+}
+@media screen and (min-width: 920px) and (max-width: 1040px) {
+  #nomination {
+    height: auto;
+  }
+  #nomination::before {
+    position: absolute;
+    left: -3em;
+    top: 0;
+  }
+  #nomination h3 {
+    width: 70%;
+    height: 400px;
+    margin: 0;
+    background-size: contain;
+    font-size: 2em;
+    padding: 50px;
+  }
+}
+@media screen and (min-width: 1040px) and (max-width: 1192px) {
+  #nomination::before {
+    left: -4em;
+    top: 0;
+  }
+  #nomination h3 {
+    width: 70%;
+    height: 400px;
+    margin: 0;
+    background-size: contain;
+    font-size: 2em;
+    padding: 50px;
   }
 }
 .site-footer {

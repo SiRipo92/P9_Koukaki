@@ -91,3 +91,34 @@
         }
     }
 }
+
+// Tablet
+@media screen and (min-width: $breakpoint__small_tablet) and (max-width: $breakpoint__tablet){
+    #studio {
+        h2 {
+            &::before {
+                position: absolute;
+                left: -2em;
+                top: 0;
+            };
+
+            &::after {
+                position: absolute;
+                right: -1em;
+                top: 1em;
+            }
+        }
+
+        > div {
+            &::before {
+                position: absolute;
+                left: calc(50% - 17.225px);
+                top: 40%;
+            }
+
+            p {
+                width: 42.5%;
+            }
+        }
+    }
+}

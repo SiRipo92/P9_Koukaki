@@ -66,7 +66,7 @@
             padding-top: 85px;
         }
 
-        span.title {
+        .title {
             padding: 0;
             margin: 0;
         }
@@ -92,10 +92,52 @@
             padding-top: 85px;
         }
 
-        span.title {
+        .title {
             padding: 0;
             margin: 0;
             text-align: center;
+        }
+    }
+}
+
+// Tablet
+@media screen and (min-width: $breakpoint__small_tablet) and (max-width: $breakpoint__tablet) {
+    #nomination {
+        height: auto;
+
+       &::before {
+        position: absolute;
+        left: -3em;
+        top: 0;
+       }
+
+       h3 {
+        width: 70%;
+        height: 400px;
+        margin: 0;
+        background-size: contain;
+        font-size: 2em;
+        padding: 50px;
+       }
+    }
+}
+
+// Laptop
+@media screen and (min-width: $breakpoint__tablet) and (max-width: $breakpoint__laptop) {
+    #nomination {
+
+        &::before {
+            left: -4em;
+            top: 0;
+        }
+
+        h3 {
+            width: 70%;
+            height: 400px;
+            margin: 0;
+            background-size: contain;
+            font-size: 2em;
+            padding: 50px;
         }
     }
 }

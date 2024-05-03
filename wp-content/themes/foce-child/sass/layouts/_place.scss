@@ -58,8 +58,31 @@
 // Small tablet
 @media screen and (min-width: $breakpoint__large_phone) and (max-width: $breakpoint__small_tablet) {
  .story #place {
-    height: 500px;
+    height: 300px;
     
+    > div h3 {
+        font-size: 2em;
+        text-align: center;
+    }
+ }
+}
+
+// Tablet
+@media screen and (min-width: $breakpoint__large_phone) and (max-width: $breakpoint__tablet) {
+ .story #place {
+    height: 450px;
+    
+    > div h3 {
+        font-size: 2em;
+        text-align: center;
+    }
+ }
+}
+
+// Laptop 
+@media screen and (min-width: $breakpoint__tablet) and (max-width: $breakpoint__laptop) {
+ .story #place {
+    height: 600px;
     > div h3 {
         font-size: 2em;
         text-align: center;
