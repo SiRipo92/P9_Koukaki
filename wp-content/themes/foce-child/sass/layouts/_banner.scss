@@ -44,20 +44,31 @@
         }
 }
 
-@media screen and (min-width: 320px) and (max-width: $breakpoint__large_phone) {
+/************************* MEDIA QUERIES *************************/
+
+// Mobile
+@media screen and (min-width: 420px) and (max-width: $breakpoint__large_phone) {
     .hero-header {
-        height: 50vh;
+        height: 80vh;
     }
-
     .banner-container {
-        height: 50vh;
-        width: 100%;
+        height: 80vh;
     }
-
-    #fallback-image {
-        object-fit: cover;
+    .hero-header__logo {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
+}
 
+// Small tablet
+@media screen and (min-width: $breakpoint__large_phone) and (max-width: $breakpoint__small_tablet) {
+    .hero-header {
+        height: 500px;
+    }
+    .banner-container {
+        height: 500px;
+    }
     .hero-header__logo {
         top: 50%;
         left: 50%;

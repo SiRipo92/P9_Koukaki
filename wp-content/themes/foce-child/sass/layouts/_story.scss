@@ -1,5 +1,3 @@
-$color__background-body: #FFF5E9;
-
 .story {
     position: relative;
     display: flex;
@@ -46,6 +44,9 @@ $color__background-body: #FFF5E9;
     }
 }
 
+/************************* MEDIA QUERIES *************************/
+
+// Mobile
 @media screen and (min-width: 320px) and (max-width: $breakpoint__large_phone)  {
   .story {
     padding: 5% 2%;
@@ -66,6 +67,25 @@ $color__background-body: #FFF5E9;
         content: none;
       }
 
+    }
+  }
+}
+
+// Small tablet
+@media screen and (min-width: $breakpoint__large_phone) and (max-width: $breakpoint__small_tablet) {
+  .story {
+    h2 {
+      font-size: 2.5em;
+      &::before, &::after {
+        content: none;
+      }
+    }
+    
+    &__article {
+      width: 80%;
+      &::before, &::after {
+        content: none;
+      }
     }
   }
 }

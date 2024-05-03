@@ -7,7 +7,6 @@
     margin: 100px 0 50px 0;
     display: flex;
     
-    
     h3 {
     background-image: url('../assets/images/orange_characters_bg.png');
     background-size: contain;
@@ -50,6 +49,10 @@
     object-fit: cover; 
 }
 
+
+/************************* MEDIA QUERIES *************************/
+
+// Mobile
 @media screen and (min-width: 320px) and (max-width: $breakpoint__large_phone)  {
 #characters-swiper {
     height: 400px;
@@ -58,6 +61,39 @@
     h3 {
         background-size: contain;
         font-size: 1.5em;
+    }
+
+    .mySwiper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90%;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 80%;
+        height: 100%;  
+        object-fit: cover; 
+    }
+}
+}
+
+// Small Tablet
+@media screen and (min-width: $breakpoint__large_phone) and (max-width: $breakpoint__tablet) {
+#characters-swiper {
+    height: 500px;
+    margin: 0;
+
+    h3 {
+        background-size: contain;
+        font-size: 2em;
     }
 
     .mySwiper {

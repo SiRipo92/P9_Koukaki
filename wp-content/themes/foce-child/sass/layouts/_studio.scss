@@ -40,12 +40,39 @@
     }
 }
 
+/************************* MEDIA QUERIES *************************/
+
+// Mobile
 @media screen and (min-width:320px) and (max-width:$breakpoint__large_phone){
     #studio {
         margin-top: 2em;
 
         h2 {
             font-size: 1.5em;
+            &::before, &::after {
+                content: none;
+            }
+        }
+
+        > div {
+            width: 80%;
+
+            &::before {
+                content: none;
+            }
+
+            p {
+                width: 100%;
+            }
+        }
+    }
+}
+
+// Small tablet
+@media screen and (min-width:$breakpoint__large_phone) and (max-width:$breakpoint__small_tablet){
+    #studio {
+        h2 {
+            font-size: 2.5em;
             &::before, &::after {
                 content: none;
             }
