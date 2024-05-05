@@ -61,7 +61,7 @@ document.querySelectorAll(".hero-header, #story, #characters-swiper, #place, #st
             swiper = new Swiper('.mySwiper', {
                 direction: "horizontal",
                 loop: true,
-                spaceBetween: 80,
+                spaceBetween: 100,
                 autoplay:  {
                     delay: 5000,
                 },
