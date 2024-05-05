@@ -1,6 +1,7 @@
 (function($) {
 
-  // FUNCTION TO UPDATE THE BANNER IMAGE/VIDEO BASED ON THE SCREEN SIZE/VIDEO ERROR
+  //******************************* BANNER IMAGE & VIDEO *******************************//
+  // Check if the banner video is playing and if it's not, display the fallback image
   const bannerVideo = document.querySelector('#bg-video');
   const fallbackImage = document.querySelector('#fallback-image');
 
@@ -22,11 +23,14 @@
 
     // Parallax effect on the banner
     $(window).scroll(function () {
+      var scrollTop = $(this).scrollTop();
       $('.banner-container').css({'transform': 'translateY(' + ($(this).scrollTop() * 0.7) + 'px)'});
       $('.hero-header__logo').css({'transform': 'translate(-50%, -50%) translateY(' + ($(this).scrollTop() * 0.7) + 'px)'});
     });
 
-   // Create an Intersection Observer for the titles
+
+  //******************************* INTERSECTION OBSERVERS *******************************//
+   // FOR TITLES
 const titleObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting && !$(entry.target).hasClass('animated')) {
@@ -36,7 +40,7 @@ const titleObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.3});
 
-// Create an Intersection Observer for the sections
+// FOR SECTIONS
 const sectionObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting ) {
@@ -51,7 +55,9 @@ const sectionObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.3});
 
 document.querySelectorAll(".hero-header, #story, #characters-swiper, #place, #studio, #nomination, .site-footer").forEach(section => { sectionObserver.observe(section) });
-  // Swiper slider
+
+  //******************************* SWIPER SLIDER *******************************//
+  // SWIPER SLIDER FOR CHARACTERS
     $(document).ready(function() {
       var swiper;
     
@@ -81,7 +87,7 @@ document.querySelectorAll(".hero-header, #story, #characters-swiper, #place, #st
         }
     }
     
-    // Initiates the swiper slider
+    // CHECK WIDTH OF THE WINDOW & ADAPT SWIPER SLIDES TO SCREEN SIZE
     window.addEventListener('load', function() {
       if ($(window).width() < 700) {
         initSwiper({
@@ -103,40 +109,34 @@ document.querySelectorAll(".hero-header, #story, #characters-swiper, #place, #st
           spaceBetween : 10
         });
       } else {
-        initSwiper(); // Use the default swiper settings for larger screens
+        initSwiper();
       }
     }
 
     });
   });
 
-// Speed up flower rotation with scroll
-
+//******************************* ANIMATIONS *******************************//
+// FLOWER ROTATION ANIMATION
 window.addEventListener('scroll', () => {
   const scrollPos = window.scrollY || document.documentElement.scrollTop;
   const rotationSpeed = 1 + scrollPos / 1500; // Adjust the divisor to control the speed
   document.documentElement.style.setProperty('--flowers-rotation-speed', `${rotationSpeed}s`);
 });
 
-// Clouds animation that move with scroll (recover window height and clouds element)
+// CLOUDS PARALLAX ANIMATION
 const windowHeight = window.innerHeight;
 const clouds = document.querySelector('.clouds');
 
 window.addEventListener('scroll', () => {
-
-  // Recover the dimensions & position of the element "clouds"
   const cloudsRect = clouds.getBoundingClientRect();
-
-  // We calculate the ratio of distance between the top of the window and the top of the clouds
   const ratio = (windowHeight - cloudsRect.y) / windowHeight;
-
-  // Multiply this ratio by -20.83 to get the value of the translation
   const translate = -20.83 * ratio;
 
-  // If the ratio is between 0 and 1, this means the clouds are visible, so we apply the movement to the clouds
   if (ratio > 0 && ratio < 1) {
     clouds.style.setProperty('transform','translateX(' + translate + 'vw)');
   }
+
 });
   
   })(jQuery);
