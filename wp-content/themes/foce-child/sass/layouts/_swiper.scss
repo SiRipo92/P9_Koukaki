@@ -2,8 +2,7 @@
     flex-direction: column;
     align-items: flex-start;
     position: relative;
-    height: 650px;
-    width: 100%;
+    min-height: 500px;
     margin: 100px 0 50px 0;
     display: flex;
     
@@ -25,130 +24,187 @@
 }
 
 .mySwiper {
-    width: 1440px;
+    max-width: 1440px;
     height: 100%;
     display: flex;
     justify-content: center;
 }
 .swiper-wrapper {
-    width: 100%;
+    width: 750%;
     height: 100%;
 }
 
 .swiper-slide {
-    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    object-fit: contain;
 }
 
 .swiper-slide img {
-    display: block;
     width: 80%;
-    height: 80%;  
-    object-fit: cover; 
+    height: 80%;
 }
 
 
 /************************* MEDIA QUERIES *************************/
 
-// Mobile
-@media screen and (min-width: 320px) and (max-width: $breakpoint__large_phone)  {
-#characters-swiper {
-    height: 400px;
-    margin: 0;
-
-    h3 {
-        background-size: contain;
-        font-size: 1.5em;
-    }
-
-    .mySwiper {
-        width: 100%;
-        height: 100%;
-    }
-
-    .swiper-slide {
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 90%;
-    }
-
-    .swiper-slide img {
-        display: block;
-        width: 80%;
-        height: 100%;  
-        object-fit: cover; 
-    }
-}
-}
-
-// Small Tablet
-@media screen and (min-width: $breakpoint__large_phone) and (max-width: $breakpoint__tablet) {
+// Mobile 
+@media screen and (min-width: 320px) and (max-width: 699px) {
     #characters-swiper {
-        height: 500px;
+        width: 100%;
+        overflow: hidden;
+        margin: 0;
+        min-height: 400px;
+
+        h3 {
+            font-size: 1.5em;
+            min-height: 100px;
+        }
+
+        .swiper-container {
+            width: 100%;
+            max-height: 500px;
+            overflow: hidden;
+
+            .swiper-wrapper, .mySwiper, .swiper-slide {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+
+        .swiper-slide {
+            object-fit: contain;
+
+            img {
+                max-height: 50%;
+                max-width: 50%;
+        }
+    }
+}
+
+// Small Tablet (700px to 919px)
+@media screen and (min-width: $breakpoint__large_phone) and (max-width: $breakpoint__small_tablet) {
+    #characters-swiper {
+        min-height: 400px;
+        width: 100%;
+        overflow: hidden;
         margin: 0;
 
         h3 {
-            background-size: contain;
             font-size: 2em;
         }
 
-        .mySwiper {
+        .swiper-container {
             width: 100%;
-            height: 100%;
-        }
-
-        .swiper-slide {
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 90%;
-        }
-
-        .swiper-slide img {
-            display: block;
-            width: 80%;
-            height: 100%;  
-            object-fit: cover; 
+            max-height: 500px;
+            overflow: hidden;
+            
+            .mySwiper, .swiper-wrapper, .swiper-slide {
+                width: 100%;
+                height: 100%;
+            }
         }
     }
+        .swiper-slide {
+            object-fit: cover;
+
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
 }
 
-// Laptop
+// Tablet to laptop (920px to 1039px)
+@media screen and (min-width: $breakpoint__small_tablet) and (max-width: $breakpoint__tablet) {
+    #characters-swiper {
+        min-height: 400px;
+        max-width: 1039px;
+        overflow: hidden;
+        margin: 0;
+
+
+        .swiper-container {
+            width: 100%;
+            max-height: 500px;
+            overflow: hidden;
+            
+            .mySwiper, .swiper-wrapper, .swiper-slide {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+        .swiper-slide {
+            object-fit: cover;
+
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+}
+
+// Tablet to laptop (1040px to 1192px)
 @media screen and (min-width:$breakpoint__tablet) and (max-width: $breakpoint__laptop) {
     #characters-swiper {
-        height: 600px;
+        min-height: 400px;
+        max-width: 1192px;
+        overflow: hidden;
         margin: 0;
-        padding: 0 -5em;
+        width: 100%;
+        padding-bottom: 50px;
 
-        h3 {
-            background-size: contain;
-            font-size: 2em;
-        }
-
-        .mySwiper {
+        .swiper-container {
             width: 100%;
-            height: 100%;
-        }
-
-        .swiper-slide {
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 90%;
-            width: 100%;
-        }
-
-        .swiper-slide img {
-            display: block;
-            width: 100%;
-            height: 100%;  
-            object-fit: cover; 
+            max-height: 500px;
+            overflow: hidden;
+            
+            .mySwiper, .swiper-wrapper, .swiper-slide {
+                width: 100%;
+                height: 100%;
+            }
         }
     }
+        .swiper-slide {
+            object-fit: cover;
+
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+}
+
+@media screen and (min-width: $breakpoint__laptop) {
+    #characters-swiper {
+        min-height: 400px;
+        max-width: 1440px;
+        overflow: hidden;
+        margin: 0;
+        width: 100%;
+        padding-bottom: 50px;
+
+        .swiper-container {
+            width: 100%;
+            max-height: 500px;
+            overflow: hidden;
+            
+            .mySwiper, .swiper-wrapper, .swiper-slide {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+        .swiper-slide {
+            object-fit: cover;
+
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
 }
