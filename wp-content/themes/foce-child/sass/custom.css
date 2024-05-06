@@ -687,7 +687,7 @@
 }
 
 /************************* MEDIA QUERIES *************************/
-@media screen and (min-width: 320px) and (max-width: 700px) {
+@media screen and (min-width: 320px) and (max-width: 699px) {
   #nomination {
     margin: 2%;
     justify-content: center;
@@ -710,7 +710,7 @@
     margin: 0;
   }
 }
-@media screen and (min-width: 700px) and (max-width: 920px) {
+@media screen and (min-width: 700px) and (max-width: 919px) {
   #nomination {
     margin: 2%;
     justify-content: center;
@@ -733,7 +733,7 @@
     text-align: center;
   }
 }
-@media screen and (min-width: 920px) and (max-width: 1040px) {
+@media screen and (min-width: 920px) and (max-width: 1039px) {
   #nomination {
     height: auto;
   }
@@ -743,12 +743,17 @@
     top: 0;
   }
   #nomination h3 {
-    width: 70%;
+    width: 65%;
     height: 400px;
-    margin: 0;
     background-size: contain;
     font-size: 2em;
-    padding: 50px;
+  }
+  #nomination h3 span {
+    padding: 10px;
+    margin-top: 100px;
+  }
+  #nomination img {
+    max-width: 30%;
   }
 }
 @media screen and (min-width: 1040px) and (max-width: 1192px) {
@@ -762,7 +767,6 @@
     margin: 0;
     background-size: contain;
     font-size: 2em;
-    padding: 50px;
   }
 }
 .site-footer {
