@@ -601,7 +601,7 @@
     width: 100%;
   }
 }
-@media screen and (min-width: 700px) and (max-width: 920px) {
+@media screen and (min-width: 700px) and (max-width: 919px) {
   #studio h2 {
     font-size: 2.5em;
   }
@@ -628,6 +628,11 @@
     position: absolute;
     right: -1em;
     top: 1em;
+  }
+  #studio > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
   }
   #studio > div::before {
     position: absolute;

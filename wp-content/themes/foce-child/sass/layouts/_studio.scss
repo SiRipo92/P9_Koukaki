@@ -42,7 +42,7 @@
 
 /************************* MEDIA QUERIES *************************/
 
-// Mobile
+// Mobile (320px to 699px)
 @media screen and (min-width:320px) and (max-width:$breakpoint__large_phone){
     #studio {
         margin-top: 2em;
@@ -68,8 +68,8 @@
     }
 }
 
-// Small tablet
-@media screen and (min-width:$breakpoint__large_phone) and (max-width:$breakpoint__small_tablet){
+// Small tablet (700px to 919px)
+@media screen and (min-width:$breakpoint__large_phone) and (max-width:919px){
     #studio {
         h2 {
             font-size: 2.5em;
@@ -92,7 +92,7 @@
     }
 }
 
-// Tablet
+// Tablet (920px to 1199px)
 @media screen and (min-width: $breakpoint__small_tablet) and (max-width: $breakpoint__tablet){
     #studio {
         h2 {
@@ -110,6 +110,9 @@
         }
 
         > div {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
             &::before {
                 position: absolute;
                 left: calc(50% - 17.225px);
