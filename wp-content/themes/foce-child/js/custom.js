@@ -1,5 +1,20 @@
 (function($) {
 
+  //******************************* MOBILE MENU *******************************//
+// Toggle the mobile menu
+document.addEventListener('DOMContentLoaded', function() {
+  const menuButton = document.querySelector('.menu-toggle'); 
+  const navMenu = document.querySelector('.mobile-nav__container');
+
+  if (menuButton && navMenu) {
+      // Add a 'click' event listener to your menu button
+      menuButton.addEventListener('click', function() {
+          navMenu.classList.toggle('open');
+          menuButton.classList.toggle('open'); 
+      });
+  }
+});
+
   //******************************* BANNER IMAGE & VIDEO *******************************//
   // Check if the banner video is playing and if it's not, display the fallback image
   const bannerVideo = document.querySelector('#bg-video');
@@ -21,12 +36,12 @@
 
   updateBanner();
 
-    // Parallax effect on the banner
-    $(window).scroll(function () {
-      var scrollTop = $(this).scrollTop();
-      $('.banner-container').css({'transform': 'translateY(' + ($(this).scrollTop() * 0.7) + 'px)'});
-      $('.hero-header__logo').css({'transform': 'translate(-50%, -50%) translateY(' + ($(this).scrollTop() * 0.7) + 'px)'});
-    });
+ // Parallax effect on the banner
+$(window).scroll(function () {
+  const scrollTop = $(this).scrollTop();
+  $('.banner-container').css({'transform': 'translateY(' + (scrollTop * 0.7) + 'px)'});
+  $('.hero-header__logo').css({'transform': 'translate(-50%, -50%) translateY(' + (scrollTop * 0.7) + 'px)'});
+});
 
 
   //******************************* INTERSECTION OBSERVERS *******************************//
@@ -62,7 +77,7 @@ document.querySelectorAll(".hero-header, #story, #characters-swiper, #place, #st
       var swiper;
     
       function initSwiper(options = {}) {
-        var swiperContainer = document.querySelector('.mySwiper');
+        const swiperContainer = document.querySelector('.mySwiper');
         if (swiperContainer) {
             swiper = new Swiper('.mySwiper', {
                 direction: "horizontal",
