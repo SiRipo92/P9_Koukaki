@@ -25,20 +25,34 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'foce' ); ?></a>
 
-	<header id="masthead" class="site-header">
-		<nav id="site-navigation" class="main-navigation">
+    <header id="masthead" class="site-header">
+       <nav id="site-navigation" class="main-navigation">
+       
+       <div class="burger-menu__header">
+            <a class="title-nav" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
             <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
                 <span class="line"></span>
                 <span class="line"></span>
                 <span class="line"></span>
             </button>
+       </div>
+       <div class="mobile-nav__container">
+            <img class="nav__logo" src="<?php echo get_stylesheet_directory_uri(). '/assets/images/nav/nav-logo.png'; ?>" alt="navigation logo">
             <ul>
-                <li><a href="#story">Histoire</a></li>
-                <li><a href="#characters">Personnages</a></li>
-                <li class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></li>
-                <li><a href="#place">Lieu</a></li>
-                <li><a href="#studio">Studio Koukaki</a></li>
-            </ul>
+                <li class="nav__link"><a href="#story">Histoire</a></li>
+                <li class="nav__link"><a href="#characters-swiper">Personnages</a></li>
+                <li class="nav__link"><a href="#place">Lieu</a></li>
+                <li class="nav__link"><a href="#studio">Studio Koukaki</a></li>
+                <li class="nav__link-footer"><a href="#">STUDIO KOUKAKI</a></li>
+            </ul>   
+            <div class="image-container__nav">
+                <img class="nav__image purple-cat" src="<?php echo get_stylesheet_directory_uri(). '/assets/images/nav/purple-cat.png'; ?>" alt="purple cat">
+                <img class="nav__image orange-cat" src="<?php echo get_stylesheet_directory_uri(). '/assets/images/nav/orange-cat.png'; ?>" alt="orange cat">
+                <img class="nav__image black-cat" src="<?php echo get_stylesheet_directory_uri(). '/assets/images/nav/black-cat.png'; ?>" alt="black cat">
+            </div>
+        </div>
 
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+        </nav>
+        
+   </header><!-- #masthead -->
+
