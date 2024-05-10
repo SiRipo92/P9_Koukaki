@@ -1,0 +1,134 @@
+//Media query so that the burger menu is visible at all times
+@media screen and (min-width: #{$breakpoint__large_phone}) {
+    .menu-toggle {
+        display: block;
+    }
+}
+
+// New color variables for links
+$color__link: black;
+$color__link-hover: #FF5C00; //orange+red
+
+@mixin link-hover__outline {
+    &:hover,
+    &:focus,
+    &:active {
+        text-shadow: 0 0 10px $color__link-hover;
+        color: $color__link;
+    }
+
+}
+
+.burger-menu__header {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70px;
+
+    .title-nav {
+        text-align: center;
+        flex-grow: 1;
+        font-weight: bold;
+        font-size: 16px;
+    }
+}
+
+.menu-toggle {
+    position: absolute;
+    right: 20px;
+
+    .line {
+        transition: 1.5s ease-in-out;
+    }
+
+    &.open {
+        .line:nth-child(1) {
+            transform: rotate(45deg) translate(1px, 5px);
+        }
+
+        .line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .line:nth-child(3) {
+            transform: rotate(-45deg) translate(2px,-6px);
+        }
+    }
+}
+
+
+.mobile-nav__container {
+    height: 100vh;
+    width: 100%;
+    background-color: #FFF5E9;
+    display: none; // Hide the container initially
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+
+    &.open {
+        display: flex;
+    }
+
+    .nav__link {
+        margin: 30px 0;
+        text-align: center;
+
+        a {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 3em;
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+
+            &:hover, &:active {
+                @include link-hover__outline;
+            }
+        }
+    }
+}
+
+.nav__logo {
+    height: 95px;
+    width: auto;
+    margin-top: 25px;
+}
+
+.nav__link-footer {
+    text-align: center;
+    margin-top: 100px;
+    text-decoration:none;
+    color: black;
+    letter-spacing: 2px;
+}
+
+.nav__image {
+    position: absolute;
+}
+
+.black-cat {
+    top: 385px;
+    left: 1076px;
+    width: 110px;
+    height: auto;
+    animation: floating 20s infinite alternate;
+}
+
+.orange-cat {
+    top: 600px;
+    left: 150px;
+    width: 90px;
+    height: auto;
+    animation: floating 30s infinite reverse;
+}
+
+.purple-cat {
+    top: 170px;
+    left: 370px;
+    width: 110px;
+    height: auto;
+    animation: floating 26s infinite alternate-reverse;
+}
