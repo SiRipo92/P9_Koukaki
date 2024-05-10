@@ -5,12 +5,27 @@
 document.addEventListener('DOMContentLoaded', function() {
   const menuButton = document.querySelector('.menu-toggle'); 
   const navMenu = document.querySelector('.mobile-nav__container');
+  const mainNavigation = document.querySelector('.main-navigation');
+  const navLinks = document.querySelectorAll('.nav__link a');
 
-  if (menuButton && navMenu) {
-      // Add a 'click' event listener to your menu button
+  if (menuButton && navMenu && mainNavigation) {
       menuButton.addEventListener('click', function() {
           navMenu.classList.toggle('open');
           menuButton.classList.toggle('open'); 
+      });
+
+      // Add event listener to each navigation link
+      navLinks.forEach(function(link) {
+          link.addEventListener('click', function() {
+              // Close the menu when a link is clicked
+              navMenu.classList.remove('open');
+              menuButton.classList.remove('open');
+
+              // If navMenu and menuButton do not have 'open' class, remove 'toggled' from mainNavigation
+              if (!navMenu.classList.contains('open') && !menuButton.classList.contains('open')) {
+                  mainNavigation.classList.remove('toggled');
+              }
+          });
       });
   }
 });
@@ -77,7 +92,7 @@ document.querySelectorAll(".hero-header, #story, #characters-swiper, #place, #st
       var swiper;
     
       function initSwiper(options = {}) {
-        const swiperContainer = document.querySelector('.mySwiper');
+         swiperContainer = document.querySelector('.mySwiper');
         if (swiperContainer) {
             swiper = new Swiper('.mySwiper', {
                 direction: "horizontal",
