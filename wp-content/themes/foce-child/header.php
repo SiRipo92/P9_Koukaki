@@ -49,6 +49,11 @@
                 <img class="nav__image purple-cat" src="<?php echo get_stylesheet_directory_uri(). '/assets/images/nav/purple-cat.png'; ?>" alt="purple cat">
                 <img class="nav__image orange-cat" src="<?php echo get_stylesheet_directory_uri(). '/assets/images/nav/orange-cat.png'; ?>" alt="orange cat">
                 <img class="nav__image black-cat" src="<?php echo get_stylesheet_directory_uri(). '/assets/images/nav/black-cat.png'; ?>" alt="black cat">
+                <img class="nav__image flower orchid" src="<?php echo get_stylesheet_directory_uri(). '/assets/images/orchid.png'; ?>" alt="purple orchid">
+                <img class="nav__image flower spotted-flower" src="<?php echo get_stylesheet_directory_uri(). '/assets/images/flower.png'; ?>" alt="spotted orange flower">
+                <img class="nav__image flower random-flower" src="<?php echo get_stylesheet_directory_uri(). '/assets/images/random_flower.png'; ?>" alt="random purple/orange flower">
+                <img class="nav__image flower sunflower" src="<?php echo get_stylesheet_directory_uri(). '/assets/images/Sunflower.png'; ?>" alt="sunflower">
+                <img class="nav__image flower hibiscus" src="<?php echo get_stylesheet_directory_uri(). '/assets/images/hibiscus_footer.png'; ?>" alt="hibiscus">
             </div>
         </div>
 
