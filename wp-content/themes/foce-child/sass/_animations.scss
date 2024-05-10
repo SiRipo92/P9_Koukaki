@@ -76,31 +76,31 @@
     transform: translate3d(0, 0, 0);
   }
   10% {
-    transform: translate3d(-10px, -10px, 0);
+    transform: translate3d(-5px, -10px, 0);
   }
   20% {
-    transform: translate3d(10px, 20px, 0);
+    transform: translate3d(5px, 10px, 0);
   }
   30% {
-    transform: translate3d(-20px, 10px, 0);
+    transform: translate3d(-5px, 5px, 0);
   }
   40% {
-    transform: translate3d(20px, 0, 0);
+    transform: translate3d(5px, 0, 0);
   }
   50% {
-    transform: translate3d(-10px, -20px, 0);
+    transform: translate3d(-5px, -10px, 0);
   }
   60% {
-    transform: translate3d(10px, 10px, 0);
+    transform: translate3d(5px, 10px, 0);
   }
   70% {
-    transform: translate3d(-20px, 0, 0);
+    transform: translate3d(-5px, 0, 0);
   }
   80% {
-    transform: translate3d(20px, -10px, 0);
+    transform: translate3d(5px, -10px, 0);
   }
   90% {
-    transform: translate3d(-10px, 20px, 0);
+    transform: translate3d(-5px, 15px, 0);
   }
 }
 
@@ -108,7 +108,7 @@
 ////// Rotating flowers
 /// 
 :root {
-  --flowers-rotation-speed: 10s;
+  --flowers-rotation-speed: 20s;
 }
 
 .story h2::after, .story__article::after, 
