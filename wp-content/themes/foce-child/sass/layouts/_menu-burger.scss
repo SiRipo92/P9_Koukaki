@@ -41,6 +41,7 @@ $color__link-hover: #FF5C00; //orange+red
 
     .line {
         transition: 1.5s ease-in-out;
+        width: 25px;
     }
 
     &.open {
@@ -60,8 +61,11 @@ $color__link-hover: #FF5C00; //orange+red
 
 
 .mobile-nav__container {
+    position: relative;
     height: 100vh;
-    width: 100%;
+    min-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
     background-color: #FFF5E9;
     display: none; // Hide the container initially
     flex-direction: column;
@@ -74,12 +78,12 @@ $color__link-hover: #FF5C00; //orange+red
     }
 
     .nav__link {
-        margin: 30px 0;
+        margin: 100px 0;
         text-align: center;
 
         a {
             font-family: 'Roboto Mono', monospace;
-            font-size: 3em;
+            font-size: 3.5em;
             color: black;
             text-decoration: none;
             cursor: pointer;
@@ -92,43 +96,75 @@ $color__link-hover: #FF5C00; //orange+red
 }
 
 .nav__logo {
-    height: 95px;
+    height: 200px;
     width: auto;
     margin-top: 25px;
 }
 
 .nav__link-footer {
     text-align: center;
-    margin-top: 100px;
+    margin: 200px 0 20px 0;
     text-decoration:none;
     color: black;
     letter-spacing: 2px;
 }
 
+
 .nav__image {
     position: absolute;
+    height: auto;
 }
 
 .black-cat {
-    top: 385px;
-    left: 1076px;
-    width: 110px;
-    height: auto;
+    top: 600px;
+    right: 300px;
+    width: 120px;
     animation: floating 20s infinite alternate;
 }
 
 .orange-cat {
-    top: 600px;
+    top: 950px;
     left: 150px;
-    width: 90px;
-    height: auto;
+    width: 120px;
     animation: floating 30s infinite reverse;
 }
 
 .purple-cat {
-    top: 170px;
+    top: 240px;
     left: 370px;
-    width: 110px;
-    height: auto;
+    width: 120px;
     animation: floating 26s infinite alternate-reverse;
+}
+
+.flower {
+    animation: spin-flowers 15s linear infinite;
+}
+
+.orchid {
+    top: 152px;
+    left: -70px;
+}
+
+.spotted-flower {
+    width: 60px;
+    top: 650px;
+    left: 200px;
+}
+
+.random-flower {
+    width: 100px;
+    right: -50px;
+    top: 540px;
+}
+
+.sunflower {
+    width: 200px;
+    top: 170px;
+    right: 280px
+}
+
+.hibiscus {
+    width: 500px;
+    top: 960px;
+    right: -200px;
 }
