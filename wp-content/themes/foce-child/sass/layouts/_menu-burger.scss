@@ -1,10 +1,3 @@
-//Media query so that the burger menu is visible at all times
-@media screen and (min-width: #{$breakpoint__large_phone}) {
-    .menu-toggle {
-        display: block;
-    }
-}
-
 // New color variables for links
 $color__link: black;
 $color__link-hover: #FF5C00; //orange+red
@@ -16,7 +9,6 @@ $color__link-hover: #FF5C00; //orange+red
         text-shadow: 0 0 10px $color__link-hover;
         color: $color__link;
     }
-
 }
 
 .burger-menu__header {
@@ -29,7 +21,7 @@ $color__link-hover: #FF5C00; //orange+red
 
     .title-nav {
         text-align: center;
-        flex-grow: 1;
+        flex: 1;
         font-weight: bold;
         font-size: 16px;
     }
@@ -38,6 +30,7 @@ $color__link-hover: #FF5C00; //orange+red
 .menu-toggle {
     position: absolute;
     right: 20px;
+    display: block !important;
 
     .line {
         transition: 1.5s ease-in-out;
@@ -59,80 +52,84 @@ $color__link-hover: #FF5C00; //orange+red
     }
 }
 
-
 .mobile-nav__container {
-    position: relative;
-    height: 100vh;
-    min-width: 100%;
-    margin: 0 auto;
-    overflow: hidden;
-    background-color: #FFF5E9;
     display: none; // Hide the container initially
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
 
     &.open {
         display: flex;
-    }
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        min-width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+        background-color: #FFF5E9;
+        position: relative;
 
-    .nav__link {
-        margin: 100px 0;
-        text-align: center;
+        .nav__link {
+            margin: 100px 0;
+            text-align: center;
+            font-size: 2.5em;
 
-        a {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 3.5em;
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-
-            &:hover, &:active {
-                @include link-hover__outline;
+            @for $i from 1 through 4 {
+                &:nth-child(#{$i}) {
+                    animation: title-slide-up 1s 1 ease-in #{$i * 0.2}s backwards;
+                }
             }
+
+            a {
+                font-family: 'Roboto Mono', monospace;
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+
+                &:hover, &:active {
+                    @include link-hover__outline;
+                }
+            }
+        }
+
+        .nav__logo {
+            height: 200px;
+            width: auto;
+            margin-top: 25px;
+        }
+
+        .nav__link-footer {
+            text-align: center;
+            margin: 150px 0 20px 0;
+            text-decoration:none;
+            color: black;
+            letter-spacing: 2px;
         }
     }
 }
-
-.nav__logo {
-    height: 200px;
-    width: auto;
-    margin-top: 25px;
-}
-
-.nav__link-footer {
-    text-align: center;
-    margin: 200px 0 20px 0;
-    text-decoration:none;
-    color: black;
-    letter-spacing: 2px;
-}
-
 
 .nav__image {
     position: absolute;
     height: auto;
 }
 
+.cat {
+    max-width: 120px;
+}
+
 .black-cat {
     top: 600px;
     right: 300px;
-    width: 120px;
     animation: floating 20s infinite alternate;
 }
 
 .orange-cat {
     top: 950px;
     left: 150px;
-    width: 120px;
     animation: floating 30s infinite reverse;
 }
 
 .purple-cat {
     top: 240px;
     left: 370px;
-    width: 120px;
     animation: floating 26s infinite alternate-reverse;
 }
 
@@ -160,11 +157,136 @@ $color__link-hover: #FF5C00; //orange+red
 .sunflower {
     width: 200px;
     top: 170px;
-    right: 280px
+    right: 280px;
 }
 
 .hibiscus {
     width: 500px;
-    top: 960px;
+    top: 940px;
     right: -200px;
 }
+
+/***********************
+* Media Queries
+***********************/
+
+// Small mobile (320px to 699px)
+@media screen and (min-width: 320px) and (max-width: 699px) {
+    .burger-menu__header {
+        flex: 1;
+        .title-nav {
+            font-size: calc(10px + 1vw);
+            font-weight: normal;
+            text-align: left;
+            margin-left: 2vw;
+        }
+    }
+
+    .menu-toggle {
+        right: calc(4px + 2vw);
+    }
+
+    .mobile-nav__container {
+        &.open {
+
+            .nav-menu {
+                flex: 1;
+                .nav__link {
+                    margin: 100px 0;
+                    font-size: calc(12px + 1.5em);
+                }
+        }
+            .nav__logo {
+                height: 120px;
+            }
+            .nav__link-footer {
+                margin: 150px 0 20px 0;
+                font-size: 12px;
+            }
+        }
+    }
+
+    .black-cat, .orange-cat, .purple-cat,
+    .spotted-flower, .random-flower, .sunflower {
+        display: none;
+    }
+    
+    .hibiscus {
+        top: 880px;
+        right: -150px;
+        width: 250px;
+    }
+
+    .orchid {
+        top: 250px;
+        left: -60px;
+        width: 100px;
+    }
+}
+
+// Small tablet (700px to 920px)
+@media screen and (min-width: $breakpoint__large_phone) and (max-width: $breakpoint__small_tablet) {
+    .burger-menu__header {
+        flex: 1;
+        .title-nav {
+            font-size: calc(12px  + 2vw);
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+
+    .mobile-nav__container {
+        &.open {
+            .nav-menu {
+                flex: 1;
+                .nav__link {
+                    margin: 100px 0;
+                    font-size: calc(14px + 2em)
+                }
+            }
+            .nav__logo {
+                height: 150px;
+            }
+
+            .nav__link-footer {
+                margin-bottom: 20px;
+                font-size: 14px;
+            }
+        }
+    }
+        .black-cat {
+            top: 585px;
+            right: 140px;
+        }
+
+        .purple-cat {
+            left: 120px;
+        } 
+
+        .orange-cat {
+            top: 820px;
+            left: 80px;
+        }
+
+        .sunflower {
+            top: 100px;
+            right: 50px;
+        }
+
+        .spotted-flower {
+            top: 600px;
+            left: 150px;
+        }
+
+        .random-flower {
+            width: 65px;
+            top: 500px;
+            right: -30px;
+        }
+
+        .hibiscus {
+            min-width: 300px;
+            top: 800px;
+            right: -220px;
+        }
+    }

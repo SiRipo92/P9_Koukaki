@@ -46,13 +46,13 @@
 
 /************************* MEDIA QUERIES *************************/
 
-// Mobile
-@media screen and (min-width: 420px) and (max-width: $breakpoint__large_phone) {
+// Mobile (320px to 699px
+@media screen and (min-width: 320px) and (max-width: 699px) {
     .hero-header {
-        height: 80vh;
+        height: 60vh;
     }
     .banner-container {
-        height: 80vh;
+        height: 60vh;
     }
     .hero-header__logo {
         top: 50%;
