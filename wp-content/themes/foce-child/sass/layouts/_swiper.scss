@@ -3,47 +3,48 @@
     align-items: flex-start;
     position: relative;
     min-height: 500px;
-    margin: 100px 0 50px 0;
+    margin: 100px 0;
     display: flex;
-    
+
     h3 {
-    background-image: url('../assets/images/orange_characters_bg.png');
-    background-size: contain;
-    
+        background-image: url('../assets/images/orange_characters_bg.png');
+        background-size: contain;
+
         span {
             display: inline-block;  
             text-align: center;
             padding: 5px;
         }
     }
-}
 
-.swiper-container {
-    width: 100%;
-    height: 100%;
-}
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
 
-.mySwiper {
-    max-width: 1440px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-}
-.swiper-wrapper {
-    width: 750%;
-    height: 100%;
-}
+        .mySwiper {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
 
-.swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    object-fit: contain;
-}
+            .swiper-wrapper {
+                height: 100%;
 
-.swiper-slide img {
-    width: 80%;
-    height: 80%;
+                .swiper-slide {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        width: 80%;
+                        height: 80%;
+                    }
+                }
+            }
+        }
+    }
 }
 
 
