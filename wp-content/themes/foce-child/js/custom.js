@@ -106,7 +106,7 @@ document.querySelectorAll(".hero-header, #story, #characters-swiper, #place, #st
                 centeredSlides: true,
                 slidesPerView: 3,
                 coverflowEffect: {
-                    rotate: 30,
+                    rotate: 50,
                     stretch: 0,
                     depth: 100,
                     modifier: 1,
