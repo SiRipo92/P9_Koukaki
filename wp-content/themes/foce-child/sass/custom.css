@@ -1048,6 +1048,93 @@
     right: -220px;
   }
 }
+@media screen and (min-width: 920px) and (max-width: 1039px) {
+  .black-cat {
+    top: 550px;
+    right: 150px;
+  }
+  .purple-cat {
+    left: 150px;
+  }
+  .orange-cat {
+    top: 800px;
+    left: 70px;
+  }
+  .spotted-flower {
+    top: 575px;
+  }
+  .sunflower {
+    right: 50px;
+  }
+  .random-flower {
+    width: 65px;
+    top: 400px;
+    right: -30px;
+  }
+  .hibiscus {
+    min-width: 300px;
+    top: 800px;
+    right: -220px;
+  }
+}
+@media screen and (min-width: 1040px) and (max-width: 1192px) {
+  .black-cat {
+    top: 500px;
+    right: 150px;
+  }
+  .purple-cat {
+    left: 150px;
+  }
+  .orange-cat {
+    top: 800px;
+    left: 70px;
+  }
+  .spotted-flower {
+    top: 575px;
+  }
+  .sunflower {
+    right: 50px;
+  }
+  .random-flower {
+    width: 65px;
+    top: 400px;
+    right: -30px;
+  }
+  .hibiscus {
+    min-width: 300px;
+    top: 800px;
+    right: -220px;
+  }
+}
+@media screen and (min-width: 1192px) and (max-width: 1440px) {
+  .black-cat {
+    top: 500px;
+    right: 150px;
+  }
+  .purple-cat {
+    left: 150px;
+  }
+  .orange-cat {
+    top: 800px;
+    left: 70px;
+  }
+  .spotted-flower {
+    top: 575px;
+  }
+  .sunflower {
+    right: 50px;
+  }
+  .random-flower {
+    width: 65px;
+    top: 400px;
+    right: -30px;
+  }
+  .hibiscus {
+    min-width: 300px;
+    top: 800px;
+    right: -220px;
+  }
+}
 h2, h3 {
   box-sizing: border-box;
   background-size: 100%;

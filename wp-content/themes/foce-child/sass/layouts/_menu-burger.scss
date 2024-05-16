@@ -290,3 +290,114 @@ $color__link-hover: #FF5C00; //orange+red
             right: -220px;
         }
     }
+
+// Tablet (920px to 1039px)
+@media screen and (min-width: $breakpoint__small_tablet) and (max-width: 1039px){
+    .black-cat {
+        top: 550px;
+        right: 150px;
+    }
+
+    .purple-cat {
+        left: 150px;
+    }
+
+    .orange-cat {
+        top: 800px;
+        left: 70px;
+    }
+
+    .spotted-flower {
+        top: 575px;
+    }
+
+    .sunflower {
+        right: 50px;
+    }
+
+    .random-flower {
+        width: 65px;
+        top: 400px;
+        right: -30px;
+    }
+
+    .hibiscus {
+        min-width: 300px;
+        top: 800px;
+        right: -220px;
+    }
+}
+
+// Laptop (1040px to 1191px)
+@media screen and (min-width: $breakpoint__tablet) and (max-width: $breakpoint__laptop) {
+    .black-cat {
+        top: 500px;
+        right: 150px;
+    }
+
+    .purple-cat {
+        left: 150px;
+    }
+
+    .orange-cat {
+        top: 800px;
+        left: 70px;
+    }
+
+    .spotted-flower {
+        top: 575px;
+    }
+
+    .sunflower {
+        right: 50px;
+    }
+
+    .random-flower {
+        width: 65px;
+        top: 400px;
+        right: -30px;
+    }
+
+    .hibiscus {
+        min-width: 300px;
+        top: 800px;
+        right: -220px;
+    }
+}
+
+// Desktop (1192px and up)
+@media screen and (min-width: $breakpoint__laptop) and (max-width: 1440px){
+    .black-cat {
+        top: 500px;
+        right: 150px;
+    }
+
+    .purple-cat {
+        left: 150px;
+    }
+
+    .orange-cat {
+        top: 800px;
+        left: 70px;
+    }
+
+    .spotted-flower {
+        top: 575px;
+    }
+
+    .sunflower {
+        right: 50px;
+    }
+
+    .random-flower {
+        width: 65px;
+        top: 400px;
+        right: -30px;
+    }
+
+    .hibiscus {
+        min-width: 300px;
+        top: 800px;
+        right: -220px;
+    }
+}
