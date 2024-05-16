@@ -6,6 +6,14 @@
     height: 100%;
     position: relative;
 
+    > div h3 {
+        margin-bottom: 10px;
+    }
+
+    > div p {
+        font-size: 16px;
+    }
+
     .clouds {
         width: 38.47%;
         position: absolute;

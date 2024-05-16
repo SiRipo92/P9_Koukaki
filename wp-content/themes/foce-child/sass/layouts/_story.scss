@@ -25,9 +25,10 @@
       align-items: center;
       text-align: center;
       width: 50%;
-      font-size: 15px;
+      font-size: 16px;
       padding-bottom: 2em;
       background-color: $color__background-body;
+      margin-bottom: 100px;
       &::before {
         content: url('../assets/images/hibiscus_leaves.png');
         position: absolute;
@@ -83,6 +84,7 @@
     
     &__article {
       width: 80%;
+      font-size: calc(14px + 0.5vw);
       &::before, &::after {
         content: none;
       }
