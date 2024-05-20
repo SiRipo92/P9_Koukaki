@@ -75,6 +75,9 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           $(entry.target).animate({opacity: 1});
+           // Also animate p elements with the class 'text-content' within the section
+          $(entry.target).find('p.text-content').animate({opacity: 1}, 1500);
+          
           sectionObserver.unobserve(entry.target);
 
           $(entry.target).find('.title').each(function() {
@@ -84,9 +87,10 @@
       });
     }, { threshold: 0.3 });
 
-    document.querySelectorAll(".hero-header, #story, #characters-swiper, #place, #studio, #nomination, .site-footer").forEach(section => {
-      sectionObserver.observe(section);
-    });
+  // Start observing the sections
+  $(".hero-header, #story, #characters-swiper, #place, #studio, #nomination, .site-footer").each(function() {
+    sectionObserver.observe(this);
+  });
   });
 
   //******************************* SWIPER SLIDER *******************************//
@@ -149,7 +153,8 @@
 
   //******************************* ANIMATIONS *******************************//
   $(document).ready(function() {
-    // FLOWER ROTATION ANIMATION
+
+    // FLOWER ROTATION ANIMATION 
     window.addEventListener('scroll', () => {
       const scrollPos = window.scrollY || document.documentElement.scrollTop;
       const rotationSpeed = 1 + scrollPos / 1500; // Adjust the divisor to control the speed

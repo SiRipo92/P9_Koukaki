@@ -1172,4 +1172,8 @@ h2 span, h3 span {
 
 .hidden {
   opacity: 0;
+}
+
+p.text-content {
+  opacity: 0;
 }/*# sourceMappingURL=custom.css.map */
