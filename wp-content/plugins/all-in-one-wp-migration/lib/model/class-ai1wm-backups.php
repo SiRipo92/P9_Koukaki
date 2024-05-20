@@ -171,6 +171,13 @@ class Ai1wm_Backups {
 		return $downloadable;
 	}
 
+	/**
+	 * Check if backups are downloadable
+	 */
+	public static function direct_download_supported() {
+		return ! ( $_SERVER['SERVER_NAME'] === 'playground.wordpress.net' || $_SERVER['SERVER_SOFTWARE'] === 'PHP.wasm' );
+	}
+
 	public static function are_in_wp_content_folder() {
 		static $in_wp_content = null;
 		if ( is_null( $in_wp_content ) ) {
