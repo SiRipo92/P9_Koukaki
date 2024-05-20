@@ -298,12 +298,12 @@
   }
 }
 #characters-swiper {
-  flex-direction: column;
-  align-items: flex-start;
   position: relative;
   min-height: 500px;
   margin: 100px 0;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 #characters-swiper h3 {
   background-image: url("../assets/images/orange_characters_bg.png");
@@ -320,23 +320,13 @@
   overflow: hidden;
 }
 #characters-swiper .swiper-container .mySwiper {
-  height: 100%;
-  width: 100%;
   display: flex;
   justify-content: center;
   overflow: hidden;
 }
-#characters-swiper .swiper-container .mySwiper .swiper-wrapper {
-  height: 100%;
-}
-#characters-swiper .swiper-container .mySwiper .swiper-wrapper .swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 #characters-swiper .swiper-container .mySwiper .swiper-wrapper .swiper-slide img {
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
 }
 
 /************************* MEDIA QUERIES *************************/
