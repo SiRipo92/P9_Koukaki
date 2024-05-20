@@ -95,33 +95,36 @@
 
   //******************************* SWIPER SLIDER *******************************//
   $(document).ready(function() {
-    var swiper;
+    let swiper;
 
     function initSwiper(options = {}) {
-      swiperContainer = document.querySelector('.mySwiper');
-      if (swiperContainer) {
-        swiper = new Swiper('.mySwiper', {
+      let swiperOptions = {
           direction: "horizontal",
           loop: true,
           spaceBetween: 100,
           autoplay:  {
-            delay: 5000,
+              delay: 5000,
           },
           effect: 'coverflow',
           grabCursor: true,
           centeredSlides: true,
           slidesPerView: 3,
           coverflowEffect: {
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: false,
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: false,
           },
           ...options
-        });
+      };
+
+      if (swiper) {
+          swiper.destroy(true, true);
       }
-    }
+      
+      swiper = new Swiper('.mySwiper', swiperOptions);
+  }
 
     // CHECK WIDTH OF THE WINDOW & ADAPT SWIPER SLIDES TO SCREEN SIZE
     $(window).on('load', function() {
@@ -135,21 +138,18 @@
       }
     });
 
-    $(window).resize(function() {
-      if (swiper) {
-        swiper.destroy();
 
-        if ($(window).width() < 700) {
+    $(window).resize(function() {
+      if ($(window).width() < 700) {
           initSwiper({
-            slidesPerView: 1,
-            spaceBetween : 10
+              slidesPerView: 1,
+              spaceBetween : 10
           });
-        } else {
+      } else {
           initSwiper();
-        }
       }
-    });
   });
+});
 
   //******************************* ANIMATIONS *******************************//
   $(document).ready(function() {
@@ -175,5 +175,4 @@
       }
     });
   });
-
 })(jQuery);
