@@ -1,6 +1,6 @@
 (function($) {
 
-  //******************************* MOBILE MENU *******************************//
+  //******************************* BURGER MENU *******************************//
   $(document).ready(function() {
     const menuButton = document.querySelector('.menu-toggle'); 
     const navMenu = document.querySelector('.mobile-nav__container');
