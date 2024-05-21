@@ -11,7 +11,7 @@ function theme_enqueue_styles() {
     wp_enqueue_style( 'swiper-bundle-css', get_stylesheet_directory_uri() . '/sass/swiper-bundle.min.css', array(), true );
     wp_enqueue_script('swiper-bundle-js', get_stylesheet_directory_uri() . '/js/swiper-bundle.min.js', array(), true);
 
-    // Add jQuery from a CDN
+    // Add jQuery
     wp_enqueue_script('jquery'); 
 
     // Add custom script
