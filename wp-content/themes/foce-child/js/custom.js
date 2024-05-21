@@ -63,7 +63,7 @@
     // FOR TITLES
     const titleObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting && !$(entry.target).hasClass('animated')) {
+        if (entry.isIntersecting) {
           $(entry.target).css('animation', 'title-slide-up 1.5s ease-in backwards');
           titleObserver.unobserve(entry.target); 
         }
