@@ -40,17 +40,6 @@
   }
 }
 
-@keyframes small-slide-up {
-  from {
-    transform: translateY(50px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-////////////////  Slowdown the animation for the titles
-
 @keyframes title-slide-up {
   0% {
     transform: translateY(50px);
@@ -104,13 +93,7 @@
   }
 }
 
-
 ////// Rotating flowers
-/// 
-:root {
-  --flowers-rotation-speed: 20s;
-}
-
 .story h2::after, .story__article::after, 
 #studio h2::before, #studio h2::after,
 .nomination::before, .nomination::after,
