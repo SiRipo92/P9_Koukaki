@@ -159,10 +159,10 @@
 /************************* MEDIA QUERIES *************************/
 @media screen and (min-width: 320px) and (max-width: 699px) {
   .hero-header {
-    height: 60vh;
+    height: 100vh;
   }
   .banner-container {
-    height: 60vh;
+    height: 100vh;
   }
   .hero-header__logo {
     top: 50%;
