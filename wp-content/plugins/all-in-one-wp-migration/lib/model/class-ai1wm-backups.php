@@ -102,8 +102,14 @@ class Ai1wm_Backups {
 	 */
 	public static function delete_file( $file ) {
 		if ( ai1wm_is_filename_supported( $file ) ) {
-			return @unlink( ai1wm_backup_path( array( 'archive' => $file ) ) );
+			if ( $deleted = @unlink( ai1wm_backup_path( array( 'archive' => $file ) ) ) ) {
+				do_action( 'ai1wm_status_backup_deleted', $file );
+			}
+
+			return $deleted;
 		}
+
+		return false;
 	}
 
 	/**
@@ -169,13 +175,6 @@ class Ai1wm_Backups {
 		}
 
 		return $downloadable;
-	}
-
-	/**
-	 * Check if backups are downloadable
-	 */
-	public static function direct_download_supported() {
-		return ! ( $_SERVER['SERVER_NAME'] === 'playground.wordpress.net' || $_SERVER['SERVER_SOFTWARE'] === 'PHP.wasm' );
 	}
 
 	public static function are_in_wp_content_folder() {

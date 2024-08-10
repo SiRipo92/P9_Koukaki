@@ -103,13 +103,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 									</li>
 									<?php if ( $downloadable ) : ?>
 										<li>
-											<?php if ( ! $direct_download_supported ) : ?>
-												<a tabindex="-1" class="ai1wm-backup-download" href="#" role="menuitem" download="<?php echo esc_attr( $backup['filename'] ); ?>" aria-label="<?php _e( 'Download', AI1WM_PLUGIN_NAME ); ?>">
+											<?php if ( ai1wm_direct_download_supported() ) : ?>
+												<a tabindex="-1" href="<?php echo esc_url( ai1wm_backup_url( array( 'archive' => $backup['filename'] ) ) ); ?>" role="menuitem" download="<?php echo esc_attr( $backup['filename'] ); ?>" aria-label="<?php _e( 'Download', AI1WM_PLUGIN_NAME ); ?>">
 													<i class="ai1wm-icon-arrow-down"></i>
 													<?php _e( 'Download', AI1WM_PLUGIN_NAME ); ?>
 												</a>
 											<?php else : ?>
-												<a tabindex="-1" href="<?php echo esc_url( ai1wm_backup_url( array( 'archive' => $backup['filename'] ) ) ); ?>" role="menuitem" download="<?php echo esc_attr( $backup['filename'] ); ?>" aria-label="<?php _e( 'Download', AI1WM_PLUGIN_NAME ); ?>">
+												<a tabindex="-1" class="ai1wm-backup-download" href="#" role="menuitem" download="<?php echo esc_attr( $backup['filename'] ); ?>" aria-label="<?php _e( 'Download', AI1WM_PLUGIN_NAME ); ?>">
 													<i class="ai1wm-icon-arrow-down"></i>
 													<?php _e( 'Download', AI1WM_PLUGIN_NAME ); ?>
 												</a>
